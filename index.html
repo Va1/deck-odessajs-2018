@@ -19,29 +19,38 @@
 </header>
 
 <style>
-  .slide h2 {
+  .slide.c-slide {
+    padding: 70px 50px 0 50px;
+  }
+  .slide.c-slide h2 {
     color: #000000;
   }
-  .slide p {
+  .slide.c-slide p {
     color: #000000;
   }
-  .slide .c-highlight {
+  .slide.c-slide::after {
+    display: none;
+  }
+  .slide.c-slide .c-highlight {
     color: #ff0000;
   }
-  .slide.c-cover h2 {
+  .slide.c-slide.c-slide-cover h2 {
     margin: 100px 0 0;
     text-align:center;
     font-size: 70px;
   }
-  .slide.c-cover p {
+  .slide.c-slide.c-slide-cover p {
     margin: 10px 0 0;
     text-align: center;
     font-style: italic;
     font-size: 20px;
   }
+  .slide.c-slide .c-code code {
+    font-size: 14px;
+  }
 </style>
 
-<section class="slide c-cover">
+<section class="slide c-slide c-slide-cover">
   <h2>
     Rx in React, Rx in Angular and
     <br />
@@ -58,7 +67,7 @@
   </figure>-->
 </section>
 
-<section class="slide c-cover">
+<section class="slide c-slide c-slide-cover">
   <h2>
     Rx in React, Rx in Angular and
     <br />
@@ -77,7 +86,7 @@
   </figure>-->
 </section>
 
-<section class="slide">
+<section class="slide c-slide">
   <h2>
     About Me
   </h2>
@@ -94,7 +103,7 @@
   </ul>
 </section>
 
-<section class="slide">
+<section class="slide c-slide">
   <h2>
     Agenda
   </h2>
@@ -111,16 +120,16 @@
   </ul>
 </section>
 
-<section class="slide">
+<section class="slide c-slide">
   <h2>
     Example
   </h2>
-  <pre>
-    <code>todo();</code>
-  </pre>
+  <p>
+    TODO : diagram
+  </p>
 </section>
 
-<section class="slide c-cover">
+<section class="slide c-slide c-slide-cover">
   <h2>
     From Chaos to Order
   </h2>
@@ -129,7 +138,7 @@
   </p>
 </section>
 
-<section class="slide c-cover">
+<section class="slide c-slide c-slide-cover">
   <h2>
     Imperative, Stateless
   </h2>
@@ -138,16 +147,32 @@
   </p>
 </section>
 
-<section class="slide">
+<section class="slide c-slide">
   <h2>
     Example: jQuery, Underscore
   </h2>
-  <pre>
-    <code>todo();</code>
+  <pre class="c-code">
+    <code>&lt;button&gt;Fetch Items&lt;/button&gt;</code>
+  </pre>
+  <pre class="c-code">
+    <code>&lt;script class="text/template" id="itemsTemplate"&gt;</code>
+    <code>  &lt;ul&gt;</code>
+    <code>    &lt;% for (var i = 0; i <= items.length; i++) { %&gt;</code>
+    <code>      &lt;li&gt;</code>
+    <code>        &lt;span&gt; &lt;%= items[i] &gt; &lt;/span&gt;</code>
+    <code>      &lt;/li&gt;</code>
+    <code>    &lt;% } %&gt;</code>
+    <code>  &lt;/ul&gt;</code>
+    <code>&lt;/script&gt;</code>
+  </pre>
+  <pre class="c-code">
+    <code>&lt;script class="text/template" id="errorTemplate"&gt;</code>
+    <code>  &lt;span&gt; &lt;%= error &gt; &lt;/span&gt;</code>
+    <code>&lt;/script&gt;</code>
   </pre>
 </section>
 
-<section class="slide">
+<section class="slide c-slide">
   <h2>
     Example: Angular 1
   </h2>
@@ -156,7 +181,7 @@
   </pre>
 </section>
 
-<section class="slide">
+<section class="slide c-slide">
   <h2>
     Theses
   </h2>
@@ -177,7 +202,7 @@
   </ul>
 </section>
 
-<section class="slide c-cover">
+<section class="slide c-slide c-slide-cover">
   <h2>
     Reactive, Stateful
   </h2>
@@ -186,7 +211,7 @@
   </p>
 </section>
 
-<section class="slide">
+<section class="slide c-slide">
   <h2>
     Example: React
   </h2>
@@ -195,7 +220,7 @@
   </pre>
 </section>
 
-<section class="slide">
+<section class="slide c-slide">
   <h2>
     Theses
   </h2>
@@ -212,7 +237,7 @@
   </ul>
 </section>
 
-<section class="slide c-cover">
+<section class="slide c-slide c-slide-cover">
   <h2>
     Purge the Unclean!
   </h2>
@@ -221,7 +246,7 @@
   </p>
 </section>
 
-<section class="slide c-cover">
+<section class="slide c-slide c-slide-cover">
   <h2>
     Reactive, Stateful, <span class="c-highlight">Pure</span>
   </h2>
@@ -230,7 +255,7 @@
   </p>
 </section>
 
-<section class="slide">
+<section class="slide c-slide">
   <h2>
     Get to know Rx
   </h2>
@@ -247,7 +272,7 @@
   </ul>
 </section>
 
-<section class="slide">
+<section class="slide c-slide">
   <h2>
     Example: React, Redux, Rx
   </h2>
@@ -256,7 +281,7 @@
   </pre>
 </section>
 
-<section class="slide">
+<section class="slide c-slide">
   <h2>
     Example: Angular 2, NgRx
   </h2>
@@ -265,7 +290,7 @@
   </pre>
 </section>
 
-<section class="slide">
+<section class="slide c-slide">
   <h2>
     Theses
   </h2>
@@ -289,7 +314,7 @@
   </ul>
 </section>
 
-<section class="slide">
+<section class="slide c-slide">
   <h2>
     Theses
   </h2>
@@ -309,7 +334,7 @@
   </ul>
 </section>
 
-<section class="slide">
+<section class="slide c-slide">
   <h2>
     Example: Rx complex async flow
   </h2>
@@ -318,7 +343,7 @@
   </pre>
 </section>
 
-<section class="slide">
+<section class="slide c-slide">
   <h2>
     Theses
   </h2>
@@ -335,7 +360,7 @@
   </ul>
 </section>
 
-<section class="slide c-cover">
+<section class="slide c-slide c-slide-cover">
   <h2>
     One Lib to rule Them All
   </h2>
@@ -344,13 +369,13 @@
   </p>
 </section>
 
-<section class="slide c-cover">
+<section class="slide c-slide c-slide-cover">
   <h2>
     Everything is a Stream
   </h2>
 </section>
 
-<section class="slide">
+<section class="slide c-slide">
   <h2>
     Example: Cycle, Rx
   </h2>
@@ -359,7 +384,7 @@
   </pre>
 </section>
 
-<section class="slide">
+<section class="slide c-slide">
   <h2>
     Theses
   </h2>
@@ -382,13 +407,13 @@
   </ul>
 </section>
 
-<section class="slide c-cover">
+<section class="slide c-slide c-slide-cover">
   <h2>
     Backend is a Stream
   </h2>
 </section>
 
-<section class="slide">
+<section class="slide c-slide">
   <h2>
     Example: Node, Rx
   </h2>
@@ -397,7 +422,7 @@
   </pre>
 </section>
 
-<section class="slide">
+<section class="slide c-slide">
   <h2>
     Theses
   </h2>
@@ -411,13 +436,13 @@
   </ul>
 </section>
 
-<section class="slide c-cover">
+<section class="slide c-slide c-slide-cover">
   <h2>
     Thank You!
   </h2>
 </section>
 
-<section class="slide">
+<section class="slide c-slide">
   <h2>
     Contact Me
   </h2>
