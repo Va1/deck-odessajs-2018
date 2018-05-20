@@ -223,6 +223,47 @@
   <h2>
     Example: Angular 1
   </h2>
+  <div class="c-code">
+    <div class="c-code-column">
+      <label>
+        template.html :
+      </label>
+      <pre>
+        <code>&lt;button onclick="fetchItems()"&gt;</code>
+        <code>  Fetch Items</code>
+        <code>&lt;/button&gt;</code>
+        <code> </code>
+        <code>&lt;div&gt;</code>
+        <code>  &lt;ul&gt;</code>
+        <code>    &lt;li ngfor="TODOTODO"&gt;</code>
+        <code>      &lt;span&gt; {item} &lt;/span&gt;</code>
+        <code>    &lt;/li&gt;</code>
+        <code>  &lt;/ul&gt;</code>
+        <code>&lt;/div&gt;</code>
+      </pre>
+    </div>
+    <div class="c-code-column">
+      <label>
+        controller.js :
+      </label>
+      <pre>
+        <code>const vm = this</code>
+        <code> </code>
+        <code>vm.items = []</code>
+        <code>vm.error = ''</code>
+        <code> </code>
+        <code>vm.fetchItems = () => {</code>
+        <code>  $http.get('/items')</code>
+        <code>    .then(items => {</code>
+        <code>      vm.items = items</code>
+        <code>    })</code>
+        <code>    .error(error => {</code>
+        <code>      vm.items = error</code>
+        <code>    })</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
 </section>
 
 <section class="slide c-slide">
