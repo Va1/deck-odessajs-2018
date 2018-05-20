@@ -1,205 +1,595 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Shower Presentation Engine</title>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
+  <title>Rx in React, Rx in Angular and why we all should be friends by Valentyn Barmashyn</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="shower/themes/ribbon/styles/screen-16x10.css">
 </head>
 <body class="shower list">
 
-	<header class="caption">
-		<h1>Shower Presentation Engine</h1>
-		<p>Yours Truly, Famous Inc.</p>
-	</header>
+<header class="caption">
+  <h1>
+    Rx in React, Rx in Angular and why we all should be friends
+  </h1>
+  <p>
+    by Valentyn Barmashyn
+  </p>
+</header>
 
-	<section class="slide" id="cover">
-		<h2>Shower Presentation Engine</h2>
-		<p>Brought to you by <a href="http://pepelsbey.net">Vadim Makeev</a></p>
-		<figure>
-			<img class="cover" src="pictures/cover.jpg" alt="Hands on the orange typewriter in a park">
-			<figcaption class="white">
-				<a href="http://fiftyfootshadows.net/">© John Carey</a>
-			</figcaption>
-		</figure>
-		<style>
-			#cover h2 {
-				margin:30px 0 0;
-				color:#FFF;
-				text-align:center;
-				font-size:70px;
-				}
-			#cover p {
-				margin:10px 0 0;
-				text-align:center;
-				color:#FFF;
-				font-style:italic;
-				font-size:20px;
-				}
-				#cover p a {
-					color:#FFF;
-					}
-		</style>
-	</section>
+<style>
+  .slide h2 {
+    color: #000000;
+  }
+  .slide p {
+    color: #000000;
+  }
+  .slide .c-highlight {
+    color: #ff0000;
+  }
+  .slide.c-cover h2 {
+    margin: 100px 0 0;
+    text-align:center;
+    font-size: 70px;
+  }
+  .slide.c-cover p {
+    margin: 10px 0 0;
+    text-align: center;
+    font-style: italic;
+    font-size: 20px;
+  }
+</style>
 
-	<section class="slide">
-		<h2>Shower key features</h2>
-		<ol>
-			<li>Built on HTML, CSS and vanilla JavaScript</li>
-			<li>Works in all modern browsers</li>
-			<li>Themes are separated from engine</li>
-			<li>Modular and extensible</li>
-			<li>Fully keyboard accessible</li>
-			<li>Printable to PDF</li>
-		</ol>
-		<p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>
-	</section>
+<section class="slide c-cover">
+  <h2>
+    Rx in React, Rx in Angular and
+    <br />
+    why we all should be friends
+  </h2>
+  <p>
+    by Valentyn Barmashyn
+  </p>
+  <!--<figure>
+    <img class="cover" src="pictures/cover.jpg" alt="Hands on the orange typewriter in a park">
+    <figcaption class="white">
+      <a href="http://fiftyfootshadows.net/">© John Carey</a>
+    </figcaption>
+  </figure>-->
+</section>
 
-	<section class="slide">
-		<h2>Plain text on your slides</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur <a href="#4">adipisicing</a> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <em>quis nostrud</em> exercitation ullamco laboris <strong>nisi ut aliquip</strong> ex ea commodo consequat. Duis aute irure <i>dolor</i> in reprehenderit in voluptate velit esse cillum <b>dolore</b> eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in <code>&lt;culpa&gt;</code> qui officia deserunt mollit anim id est laborum.</p>
-	</section>
+<section class="slide c-cover">
+  <h2>
+    Rx in React, Rx in Angular and
+    <br />
+    <span class="c-highlight">
+      why we all should be friends
+    </span>
+  </h2>
+  <p>
+    by Valentyn Barmashyn
+  </p>
+  <!--<figure>
+    <img class="cover" src="pictures/cover.jpg" alt="Hands on the orange typewriter in a park">
+    <figcaption class="white">
+      <a href="http://fiftyfootshadows.net/">© John Carey</a>
+    </figcaption>
+  </figure>-->
+</section>
 
-	<section class="slide">
-		<h2>Two columns if you like</h2>
-		<p class="double">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-	</section>
+<section class="slide">
+  <h2>
+    About Me
+  </h2>
+  <ul>
+    <li>
+      6 years in software engineering
+    </li>
+    <li>
+      JavaScript, Go, Python, Ruby, Java, PHP
+    </li>
+    <li>
+      React (w/ and  w/o Redux), Angular 2+, Angular 1, Backbone
+    </li>
+  </ul>
+</section>
 
-	<section class="slide">
-		<h2>All kind of lists</h2>
-		<ol>
-			<li>Simple lists are marked with bullets</li>
-			<li>Ordered lists begin with a number</li>
-			<li>You can even nest lists one inside another
-				<ul>
-					<li>Or mix their types</li>
-					<li>But do not go too far</li>
-					<li>Otherwise audience will be bored</li>
-				</ul>
-			</li>
-			<li>Look, seven rows exactly!</li>
-		</ol>
-	</section>
+<section class="slide">
+  <h2>
+    Agenda
+  </h2>
+  <ul>
+    <li class="next">
+      we’re looking at <span class="c-highlight">single</span> example rewritten with <span class="c-highlight">different technologies</span>
+    </li>
+    <li class="next">
+      we’re moving <span class="c-highlight">from past to present</span>
+    </li>
+    <li class="next">
+      we’re thinking in <span class="c-highlight">conceptual</span>, <span class="c-highlight">abstract</span> and <span class="c-highlight">technology-agnostic</span> way
+    </li>
+  </ul>
+</section>
 
-	<section class="slide">
-		<h2>Serious citations</h2>
-		<figure>
-			<blockquote>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-			</blockquote>
-			<figcaption>Marcus Tullius Cicero</figcaption>
-		</figure>
-	</section>
+<section class="slide">
+  <h2>
+    Example
+  </h2>
+  <pre>
+    <code>todo();</code>
+  </pre>
+</section>
 
-	<section class="slide">
-		<h2>Code samples</h2>
-		<pre>
-			<code>&lt;!DOCTYPE html&gt;</code>
-			<code class="mark">&lt;html lang="en"&gt;</code>
-			<code><mark>&lt;head&gt;</mark> <span class="comment">&lt;!--Comment--&gt;</span></code>
-			<code>    &lt;title&gt;Shower&lt;/title&gt;</code>
-			<code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
-			<code>    &lt;link rel="stylesheet" href="screen.css"&gt;</code>
-			<code><mark>&lt;/head&gt;</mark></code>
-		</pre>
-	</section>
+<section class="slide c-cover">
+  <h2>
+    From Chaos to Order
+  </h2>
+  <p>
+    from imperative mess to reactive state
+  </p>
+</section>
 
-	<section class="slide">
-		<h2>Even tables</h2>
-		<table>
-		<tr>
-			<th scope="col">Locavore</th>
-			<th>Umami</th>
-			<th>Helvetica</th>
-			<th>Vegan</th>
-		</tr>
-		<tr>
-			<th scope="row">Fingerstache</th>
-			<td>Kale</td>
-			<td>Chips</td>
-			<td>Keytar</td>
-		</tr>
-		<tr>
-			<th scope="row">Sriracha</th>
-			<td>Gluten-free</td>
-			<td>Ennui</td>
-			<td>Keffiyeh</td>
-		</tr>
-		<tr>
-			<th scope="row">Thundercats</th>
-			<td>Jean</td>
-			<td>Shorts</td>
-			<td>Biodiesel</td>
-		</tr>
-		<tr>
-			<th scope="row">Terry</th>
-			<td>Richardson</td>
-			<td>Swag</td>
-			<td>Blog</td>
-		</tr>
-		</table>
-		<p>It’s good to have information organized.</p>
-	</section>
+<section class="slide c-cover">
+  <h2>
+    Imperative, Stateless
+  </h2>
+  <p>
+    (-2013)
+  </p>
+</section>
 
-	<section class="slide" id="picture">
-		<h2>Pictures</h2>
-		<figure>
-			<img class="cover" src="pictures/picture.jpg" alt="Orange typewriter on a wooden table close-up">
-			<figcaption class="white">
-				<a href="http://fiftyfootshadows.net/">© John Carey</a>
-			</figcaption>
-		</figure>
-		<style>
-			#picture h2 {
-				color:#FFF;
-				}
-		</style>
-	</section>
+<section class="slide">
+  <h2>
+    Example: jQuery, Underscore
+  </h2>
+  <pre>
+    <code>todo();</code>
+  </pre>
+</section>
 
-	<section class="slide">
-		<h2 class="shout shrink">You can even shout this way</h2>
-	</section>
+<section class="slide">
+  <h2>
+    Example: Angular 1
+  </h2>
+  <pre>
+    <code>todo();</code>
+  </pre>
+</section>
 
-	<section class="slide">
-		<h2>Inner navigation</h2>
-		<ol>
-			<li>Lets you reveal list items one by one</li>
-			<li class="next">To keep some key points</li>
-			<li class="next">In secret from audience</li>
-			<li class="next">But it will work only once</li>
-			<li class="next">Nobody wants to see the same joke twice</li>
-		</ol>
-	</section>
+<section class="slide">
+  <h2>
+    Theses
+  </h2>
+  <ul>
+    <li class="next">
+      <span class="c-highlight">imperative</span> is fine for small things
+    </li>
+    <li class="next">
+      complexity grows super fast with size
+    </li>
+    <li class="next">
+      complex async flow is painful
+    </li>
+    <li class="next">
+      <span class="c-highlight">impure</span> code makes testing and debugging painful (Angular 1 DI helps with
+      testing)
+    </li>
+  </ul>
+</section>
 
-	<section class="slide grid">
-		<h2>All nicely aligned to grid</h2>
-	</section>
+<section class="slide c-cover">
+  <h2>
+    Reactive, Stateful
+  </h2>
+  <p>
+    (2013-2015)
+  </p>
+</section>
 
-	<section class="slide" id="see-more">
-		<h2 class="shout">
-			<img src="pictures/logo.svg" alt="Shower logo">
-			<a href="https://github.com/shower/shower">See more on GitHub</a>
-		</h2>
-		<style>
-			#see-more h2 {
-				font-size:100px
-				}
-			#see-more img {
-				width:0.72em;
-				height:0.72em;
-				}
-		</style>
-	</section>
+<section class="slide">
+  <h2>
+    Example: React
+  </h2>
+  <pre>
+    <code>todo();</code>
+  </pre>
+</section>
 
-	<footer class="badge">
-		<a href="https://github.com/shower/shower">Fork me on GitHub</a>
-	</footer>
+<section class="slide">
+  <h2>
+    Theses
+  </h2>
+  <ul>
+    <li class="next">
+      <span class="c-highlight">reactive</span>, <span class="c-highlight">strict</span>, <span class="c-highlight">explicit</span> dataflow - <span class="c-highlight">state & props</span> (parent state) to be the only sources of truth for the render
+    </li>
+    <li class="next">
+      much like Angular 1, but better because <span class="c-highlight">allows component composition</span> (Angular 1 controller composition and data exchange is hell)
+    </li>
+    <li class="next">
+      complex async flow is still painful (nothing changed)
+    </li>
+  </ul>
+</section>
 
-	<div class="progress"></div>
+<section class="slide c-cover">
+  <h2>
+    Purge the Unclean!
+  </h2>
+  <p>
+    from impure to pure dataflow
+  </p>
+</section>
 
-	<script src="shower/shower.min.js"></script>
-	<!-- Copyright © 2018 Yours Truly, Famous Inc. -->
+<section class="slide c-cover">
+  <h2>
+    Reactive, Stateful, <span class="c-highlight">Pure</span>
+  </h2>
+  <p>
+    (2015-)
+  </p>
+</section>
+
+<section class="slide">
+  <h2>
+    Get to know Rx
+  </h2>
+  <ul>
+    <li>
+      many langs
+    </li>
+    <li>
+      out of the box in angular2
+    </li>
+    <li>
+      analogs
+    </li>
+  </ul>
+</section>
+
+<section class="slide">
+  <h2>
+    Example: React, Redux, Rx
+  </h2>
+  <pre>
+    <code>todo();</code>
+  </pre>
+</section>
+
+<section class="slide">
+  <h2>
+    Example: Angular 2, NgRx
+  </h2>
+  <pre>
+    <code>todo();</code>
+  </pre>
+</section>
+
+<section class="slide">
+  <h2>
+    Theses
+  </h2>
+  <ul>
+    <li class="next">
+      <span class="c-highlight">entities</span> in both examples <span class="c-highlight">are the same</span> (state, actions, reducers, selectors, subscriptions)
+    </li>
+    <li class="next">
+      <span class="c-highlight">dataflow</span> for both platforms <span class="c-highlight">is the same</span>
+    </li>
+    <li class="next">
+      <span class="c-highlight">side-effect model</span> (and code!) for both platforms <span class="c-highlight">is the same</span>
+    </li>
+    <li class="next">
+      main <span class="c-highlight">difference is in rendering and data binding</span> (react jsx & virtual dom vs angular templates & shadow dom, react props vs angular input/output decorators, etc)
+    </li>
+    <li class="next">
+      there are mostly <span class="c-highlight">syntactic</span> (and implementation) <span class="c-highlight">differences</span> between
+      platforms
+    </li>
+  </ul>
+</section>
+
+<section class="slide">
+  <h2>
+    Theses
+  </h2>
+  <ul>
+    <li class="next">
+      actions (or changes, or events) are stream
+    </li>
+    <li class="next">
+      data is stream
+    </li>
+    <li class="next">
+      purity achieved as side-effects isolated
+    </li>
+    <li class="next">
+      complex async flow is easier to implement as Rx introduced
+    </li>
+  </ul>
+</section>
+
+<section class="slide">
+  <h2>
+    Example: Rx complex async flow
+  </h2>
+  <pre>
+    <code>todo();</code>
+  </pre>
+</section>
+
+<section class="slide">
+  <h2>
+    Theses
+  </h2>
+  <ul>
+    <li class="next">
+      Rx allows for intermediate results of a complex async flow
+    </li>
+    <li class="next">
+      Rx allows for cancellation of an async flow
+    </li>
+    <li class="next">
+      Rx allows for very complex stream manipulations
+    </li>
+  </ul>
+</section>
+
+<section class="slide c-cover">
+  <h2>
+    One Lib to rule Them All
+  </h2>
+  <p>
+    Streams everywhere
+  </p>
+</section>
+
+<section class="slide c-cover">
+  <h2>
+    Everything is a Stream
+  </h2>
+</section>
+
+<section class="slide">
+  <h2>
+    Example: Cycle, Rx
+  </h2>
+  <pre>
+    <code>todo();</code>
+  </pre>
+</section>
+
+<section class="slide">
+  <h2>
+    Theses
+  </h2>
+  <ul>
+    <li class="next">
+      actions (or changes, or events) are stream
+    </li>
+    <li class="next">
+      data is stream
+    </li>
+    <li class="next">
+      DOM updates are stream
+    </li>
+    <li class="next">
+      DOM events are stream
+    </li>
+    <li class="next">
+      all front-end <span class="c-highlight">application logic is a stream manipulation logic</span>
+    </li>
+  </ul>
+</section>
+
+<section class="slide c-cover">
+  <h2>
+    Backend is a Stream
+  </h2>
+</section>
+
+<section class="slide">
+  <h2>
+    Example: Node, Rx
+  </h2>
+  <pre>
+    <code>todo();</code>
+  </pre>
+</section>
+
+<section class="slide">
+  <h2>
+    Theses
+  </h2>
+  <ul>
+    <li class="next">
+      stream manipulation is an abstract concept that can be applied to any domain
+    </li>
+    <li class="next">
+      streams solve problems well when time is a component of a problem
+    </li>
+  </ul>
+</section>
+
+<section class="slide c-cover">
+  <h2>
+    Thank You!
+  </h2>
+</section>
+
+<section class="slide">
+  <h2>
+    Contact Me
+  </h2>
+  <ul>
+    <li>
+      todo: email & social profiles links
+    </li>
+  </ul>
+</section>
+
+<!--
+<section class="slide">
+  <h2>Shower key features</h2>
+  <ol>
+    <li>Built on HTML, CSS and vanilla JavaScript</li>
+    <li>Works in all modern browsers</li>
+    <li>Themes are separated from engine</li>
+    <li>Modular and extensible</li>
+    <li>Fully keyboard accessible</li>
+    <li>Printable to PDF</li>
+  </ol>
+  <p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>
+</section>
+
+<section class="slide">
+  <h2>Plain text on your slides</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur <a href="#4">adipisicing</a> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <em>quis nostrud</em> exercitation ullamco laboris <strong>nisi ut aliquip</strong> ex ea commodo consequat. Duis aute irure <i>dolor</i> in reprehenderit in voluptate velit esse cillum <b>dolore</b> eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in <code>&lt;culpa&gt;</code> qui officia deserunt mollit anim id est laborum.</p>
+</section>
+
+<section class="slide">
+  <h2>Two columns if you like</h2>
+  <p class="double">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
+</section>
+
+<section class="slide">
+  <h2>All kind of lists</h2>
+  <ol>
+    <li>Simple lists are marked with bullets</li>
+    <li>Ordered lists begin with a number</li>
+    <li>You can even nest lists one inside another
+      <ul>
+        <li>Or mix their types</li>
+        <li>But do not go too far</li>
+        <li>Otherwise audience will be bored</li>
+      </ul>
+    </li>
+    <li>Look, seven rows exactly!</li>
+  </ol>
+</section>
+
+<section class="slide">
+  <h2>Serious citations</h2>
+  <figure>
+    <blockquote>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
+    </blockquote>
+    <figcaption>Marcus Tullius Cicero</figcaption>
+  </figure>
+</section>
+
+<section class="slide">
+  <h2>Code samples</h2>
+  <pre>
+      <code>&lt;!DOCTYPE html&gt;</code>
+      <code class="mark">&lt;html lang="en"&gt;</code>
+      <code><mark>&lt;head&gt;</mark> <span class="comment">&lt;!&#45;&#45;Comment&#45;&#45;&gt;</span></code>
+      <code>    &lt;title&gt;Shower&lt;/title&gt;</code>
+      <code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
+      <code>    &lt;link rel="stylesheet" href="screen.css"&gt;</code>
+      <code><mark>&lt;/head&gt;</mark></code>
+    </pre>
+</section>
+
+<section class="slide">
+  <h2>Even tables</h2>
+  <table>
+    <tr>
+      <th scope="col">Locavore</th>
+      <th>Umami</th>
+      <th>Helvetica</th>
+      <th>Vegan</th>
+    </tr>
+    <tr>
+      <th scope="row">Fingerstache</th>
+      <td>Kale</td>
+      <td>Chips</td>
+      <td>Keytar</td>
+    </tr>
+    <tr>
+      <th scope="row">Sriracha</th>
+      <td>Gluten-free</td>
+      <td>Ennui</td>
+      <td>Keffiyeh</td>
+    </tr>
+    <tr>
+      <th scope="row">Thundercats</th>
+      <td>Jean</td>
+      <td>Shorts</td>
+      <td>Biodiesel</td>
+    </tr>
+    <tr>
+      <th scope="row">Terry</th>
+      <td>Richardson</td>
+      <td>Swag</td>
+      <td>Blog</td>
+    </tr>
+  </table>
+  <p>It’s good to have information organized.</p>
+</section>
+
+<section class="slide" id="picture">
+  <h2>Pictures</h2>
+  <figure>
+    <img class="cover" src="pictures/picture.jpg" alt="Orange typewriter on a wooden table close-up">
+    <figcaption class="white">
+      <a href="http://fiftyfootshadows.net/">© John Carey</a>
+    </figcaption>
+  </figure>
+  <style>
+    #picture h2 {
+      color:#FFF;
+    }
+  </style>
+</section>
+
+<section class="slide">
+  <h2 class="shout shrink">You can even shout this way</h2>
+</section>
+
+<section class="slide">
+  <h2>Inner navigation</h2>
+  <ol>
+    <li>Lets you reveal list items one by one</li>
+    <li class="next">To keep some key points</li>
+    <li class="next">In secret from audience</li>
+    <li class="next">But it will work only once</li>
+    <li class="next">Nobody wants to see the same joke twice</li>
+  </ol>
+</section>
+
+<section class="slide grid">
+  <h2>All nicely aligned to grid</h2>
+</section>
+
+<section class="slide" id="see-more">
+  <h2 class="shout">
+    <img src="pictures/logo.svg" alt="Shower logo">
+    <a href="https://github.com/shower/shower">See more on GitHub</a>
+  </h2>
+  <style>
+    #see-more h2 {
+      font-size:100px
+    }
+    #see-more img {
+      width:0.72em;
+      height:0.72em;
+    }
+  </style>
+</section>
+-->
+
+<footer class="badge">
+  <a href="https://github.com/Va1/deck-odessajs-2018">
+    GitHub
+  </a>
+</footer>
+
+<!--
+<div class="progress"></div>
+-->
+
+<script src="shower/shower.min.js"></script>
 
 </body>
 </html>
