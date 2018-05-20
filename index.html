@@ -20,7 +20,7 @@
 
 <style>
   .slide.c-slide {
-    padding: 70px 50px 0 50px;
+    padding: 60px 55px 0 55px;
   }
   .slide.c-slide h2 {
     color: #000000;
@@ -35,8 +35,8 @@
     color: #ff0000;
   }
   .slide.c-slide.c-slide-cover h2 {
-    margin: 100px 0 0;
-    text-align:center;
+    margin: 150px 0 0;
+    text-align: center;
     font-size: 70px;
   }
   .slide.c-slide.c-slide-cover p {
@@ -45,8 +45,28 @@
     font-style: italic;
     font-size: 20px;
   }
+  .slide.c-slide .c-code {
+    display: flex;
+    margin: 0 -40px 0 -40px;
+  }
+  .slide.c-slide .c-code .c-code-column {
+    width: 50%;
+    flex-shrink: 1;
+    flex-grow: 1;
+    padding: 0 0 0 30px;
+  }
+  .slide.c-slide .c-code label {
+    display: block;
+    margin: 0 0 5px 0;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .slide.c-slide .c-code pre {
+    margin: 0 0 15px 0;
+  }
   .slide.c-slide .c-code code {
-    font-size: 14px;
+    font-size: 15px;
+    line-height: 22px;
   }
 </style>
 
@@ -151,34 +171,58 @@
   <h2>
     Example: jQuery, Underscore
   </h2>
-  <pre class="c-code">
-    <code>&lt;button&gt;Fetch Items&lt;/button&gt;</code>
-  </pre>
-  <pre class="c-code">
-    <code>&lt;script class="text/template" id="itemsTemplate"&gt;</code>
-    <code>  &lt;ul&gt;</code>
-    <code>    &lt;% for (var i = 0; i <= items.length; i++) { %&gt;</code>
-    <code>      &lt;li&gt;</code>
-    <code>        &lt;span&gt; &lt;%= items[i] &gt; &lt;/span&gt;</code>
-    <code>      &lt;/li&gt;</code>
-    <code>    &lt;% } %&gt;</code>
-    <code>  &lt;/ul&gt;</code>
-    <code>&lt;/script&gt;</code>
-  </pre>
-  <pre class="c-code">
-    <code>&lt;script class="text/template" id="errorTemplate"&gt;</code>
-    <code>  &lt;span&gt; &lt;%= error &gt; &lt;/span&gt;</code>
-    <code>&lt;/script&gt;</code>
-  </pre>
+  <div class="c-code">
+    <div class="c-code-column">
+      <label>
+        index.html :
+      </label>
+      <pre>
+        <code>&lt;button id="button"&gt;Fetch Items&lt;/button&gt;</code>
+        <code> </code>
+        <code>&lt;div id="result"&gt;&lt;/div&gt;</code>
+        <code> </code>
+        <code>&lt;script class="text/template" id="itemsTemplate"&gt;</code>
+        <code>  &lt;ul&gt;</code>
+        <code>    &lt;% for (var i = 0; i <= items.length; i++) { %&gt;</code>
+        <code>      &lt;li&gt;</code>
+        <code>        &lt;span&gt; &lt;%= items[i] &gt; &lt;/span&gt;</code>
+        <code>      &lt;/li&gt;</code>
+        <code>    &lt;% } %&gt;</code>
+        <code>  &lt;/ul&gt;</code>
+        <code>&lt;/script&gt;</code>
+        <code> </code>
+        <code>&lt;script class="text/template" id="errorTemplate"&gt;</code>
+        <code>  &lt;span&gt; &lt;%= error &gt; &lt;/span&gt;</code>
+        <code>&lt;/script&gt;</code>
+      </pre>
+    </div>
+    <div class="c-code-column">
+      <label>
+        index.js :
+      </label>
+      <pre>
+        <code>function fetchItems () {</code>
+        <code>  const $result = $('#result')</code>
+        <code>  $.get('/items')</code>
+        <code>    .done(items => {</code>
+        <code>      $result.html(itemsTemplate({ items })</code>
+        <code>    })</code>
+        <code>    .error(error => {</code>
+        <code>      $result.html(errorTemplate({ error })</code>
+        <code>    })</code>
+        <code>}</code>
+        <code> </code>
+        <code>const $button = $('#button')</code>
+        <code>$button.on('click', () => { fetchItems() })</code>
+      </pre>
+    </div>
+  </div>
 </section>
 
 <section class="slide c-slide">
   <h2>
     Example: Angular 1
   </h2>
-  <pre>
-    <code>todo();</code>
-  </pre>
 </section>
 
 <section class="slide c-slide">
