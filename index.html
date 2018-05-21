@@ -229,14 +229,14 @@
         template.html :
       </label>
       <pre>
-        <code>&lt;button onclick="fetchItems()"&gt;</code>
+        <code>&lt;button ng-click="fetchItems()"&gt;</code>
         <code>  Fetch Items</code>
         <code>&lt;/button&gt;</code>
         <code> </code>
         <code>&lt;div&gt;</code>
         <code>  &lt;ul&gt;</code>
-        <code>    &lt;li ngfor="TODOTODO"&gt;</code>
-        <code>      &lt;span&gt; {item} &lt;/span&gt;</code>
+        <code>    &lt;li ng-repeat="item in items"&gt;</code>
+        <code>      &lt;span&gt; {{item}} &lt;/span&gt;</code>
         <code>    &lt;/li&gt;</code>
         <code>  &lt;/ul&gt;</code>
         <code>&lt;/div&gt;</code>
@@ -254,11 +254,11 @@
         <code> </code>
         <code>vm.fetchItems = () => {</code>
         <code>  $http.get('/items')</code>
-        <code>    .then(items => {</code>
-        <code>      vm.items = items</code>
+        <code>    .then(response => {</code>
+        <code>      vm.items = response.data</code>
         <code>    })</code>
         <code>    .error(error => {</code>
-        <code>      vm.items = error</code>
+        <code>      vm.items = error.text</code>
         <code>    })</code>
         <code>}</code>
       </pre>
