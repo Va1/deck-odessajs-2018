@@ -234,7 +234,10 @@
         <code>&lt;/button&gt;</code>
         <code> </code>
         <code>&lt;div&gt;</code>
-        <code>  &lt;ul&gt;</code>
+        <code>  &lt;span ng-if="error !== null"&gt;</code>
+        <code>    {{error}}</code>
+        <code>  &lt;/span&gt;</code>
+        <code>  &lt;ul ng-if="error === null"&gt;</code>
         <code>    &lt;li ng-repeat="item in items"&gt;</code>
         <code>      &lt;span&gt; {{item}} &lt;/span&gt;</code>
         <code>    &lt;/li&gt;</code>
@@ -250,15 +253,17 @@
         <code>const vm = this</code>
         <code> </code>
         <code>vm.items = []</code>
-        <code>vm.error = ''</code>
+        <code>vm.error = null</code>
         <code> </code>
         <code>vm.fetchItems = () => {</code>
         <code>  $http.get('/items')</code>
         <code>    .then(response => {</code>
         <code>      vm.items = response.data</code>
+        <code>      vm.error = null</code>
         <code>    })</code>
         <code>    .error(error => {</code>
-        <code>      vm.items = error.text</code>
+        <code>      vm.items = []</code>
+        <code>      vm.error = error.text</code>
         <code>    })</code>
         <code>}</code>
       </pre>
@@ -300,9 +305,47 @@
   <h2>
     Example: React
   </h2>
-  <pre>
-    <code>todo();</code>
-  </pre>
+  <div class="c-code">
+    <div class="c-code-column">
+      <label>
+        component.js / render method :
+      </label>
+      <pre>
+        <code>render () {</code>
+        <code>  const { fetchItems, items, error } = this.props</code>
+        <code> </code>
+        <code>  return (</code>
+        <code>    &lt;div&gt;</code>
+        <code>      &lt;button onClick={fetchItems}&gt;</code>
+        <code>        Fetch Items</code>
+        <code>      &lt;/button&gt;</code>
+        <code>      { error === null</code>
+        <code>        ? &lt;ItemsList items={items} /&gt; }</code>
+        <code>        : &lt;Error error={error} /&gt;</code>
+        <code>    &lt;/div&gt;</code>
+        <code>  )</code>
+        <code>}</code>
+      </pre>
+    </div>
+    <div class="c-code-column">
+      <label>
+        component.js / fetchItems method :
+      </label>
+      <pre>
+        <code>state = { items: [], error: null }</code>
+        <code> </code>
+        <code>fetchItems () {</code>
+        <code>  $.get('/items')</code>
+        <code>    .done(items => {</code>
+        <code>      this.setState({ items, error: null })</code>
+        <code>    })</code>
+        <code>    .error(error => {</code>
+        <code>      this.setState({ items: [], error })</code>
+        <code>    })</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
 </section>
 
 <section class="slide c-slide">
