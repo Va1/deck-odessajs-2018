@@ -57,16 +57,16 @@
   }
   .slide.c-slide .c-code label {
     display: block;
-    margin: 0 0 5px 0;
+    margin: 0 0 2px 0;
     font-size: 12px;
     font-weight: 700;
   }
   .slide.c-slide .c-code pre {
-    margin: 0 0 15px 0;
+    margin: 0 0 8px 0;
   }
   .slide.c-slide .c-code code {
     font-size: 15px;
-    line-height: 22px;
+    line-height: 20px;
   }
 </style>
 
@@ -389,13 +389,19 @@
   </h2>
   <ul>
     <li>
-      many langs
+      focuses on <span class="c-highlight">onservable streams</span> concept
     </li>
     <li>
-      out of the box in angular2
+      includes more than <span class="c-highlight">60 operators</span> for stream manipulation
     </li>
     <li>
-      analogs
+      made for <span class="c-highlight">concurrency</span> and <span class="c-highlight">asynchronicity</span>, with <span class="c-highlight">reactive</span> & <span class="c-highlight">functional</span> programming principles in mind
+    </li>
+    <li>
+      available for <span class="c-highlight">JavaScript</span>, Java, Scala, C#, C++, Clojure, Python and many others
+    </li>
+    <li>
+      is an important dependency of <span class="c-highlight">Angular 2 toolset</span>
     </li>
   </ul>
 </section>
@@ -404,9 +410,74 @@
   <h2>
     Example: React, Redux, Rx
   </h2>
-  <pre>
-    <code>todo();</code>
-  </pre>
+  <div class="c-code">
+    <div class="c-code-column">
+      <label>
+        component.js / render method :
+      </label>
+      <pre>
+        <code>render () {</code>
+        <code>  const { fetchItems, items, error } = this.props</code>
+        <code>  return (</code>
+        <code>    &lt;div&gt;</code>
+        <code>      &lt;button onClick={fetchItems}&gt;</code>
+        <code>        Fetch Items</code>
+        <code>      &lt;/button&gt;</code>
+        <code>      { error === null</code>
+        <code>        ? &lt;ItemsList items={items} /&gt; }</code>
+        <code>        : &lt;Error error={error} /&gt;</code>
+        <code>    &lt;/div&gt;</code>
+        <code>  )</code>
+        <code>}</code>
+      </pre>
+      <label>
+        component.js / connect :
+      </label>
+      <pre>
+        <code>function mapStateToProps (state) {</code>
+        <code>  const { items, error } = this.state</code>
+        <code>  return { items, error }</code>
+        <code>}</code>
+        <code>const mapDispatchToProps = { fetchItems }</code>
+        <code> </code>
+        <code>connect(mapStateToProps, mapDispatchToProps)(Items)</code>
+      </pre>
+    </div>
+    <div class="c-code-column">
+      <label>
+        actions.js :
+      </label>
+      <pre>
+        <code>const fetchItems = () => { type: '@@fetchItems' }</code>
+        <code>const fetchItemsSuccess = items =></code>
+        <code>  { type: '@@fetchItems/success', payload: items }</code>
+        <code>const fetchItemsError = error =></code>
+        <code>  { type: '@@fetchItems/error', payload: error }</code>
+      </pre>
+      <label>
+        reducer.js :
+      </label>
+      <pre>
+        <code>const defaultState = { items: [], error: null }</code>
+        <code>function reducer (state = defaultState, action) {</code>
+        <code>  switch (action.type) {</code>
+        <code>    case '@@fetchItems/success' {</code>
+        <code>      return { ...state, items: action.payload }</code>
+        <code>    }</code>
+        <code>    case '@@fetchItems/error' {</code>
+        <code>      return { ...state, error: action.error }</code>
+        <code>    }</code>
+        <code>  }</code>
+        <code>}</code>
+      </pre>
+      <label>
+        effect.js :
+      </label>
+      <pre>
+        <code>TODO</code>
+      </pre>
+    </div>
+  </div>
 </section>
 
 <section class="slide c-slide">
