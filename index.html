@@ -49,10 +49,19 @@
     display: flex;
     margin: 0 -40px 0 -40px;
   }
+  .slide.c-slide .c-code-center {
+    justify-content: center;
+    align-items: center;
+  }
   .slide.c-slide .c-code .c-code-column {
     width: 50%;
     flex-shrink: 1;
     flex-grow: 1;
+    padding: 0 0 0 30px;
+  }
+  .slide.c-slide .c-code .c-code-fullwidth {
+    flex-shrink: 1;
+    flex-grow: 0;
     padding: 0 0 0 30px;
   }
   .slide.c-slide .c-code label {
@@ -1241,7 +1250,7 @@
         <code>}</code>
         <code>const mapDispatchToProps = { fetchItems }</code>
         <code> </code>
-        <code>connect(mapStateToProps, mapDispatchToProps)(Items)</code>
+        <code>connect(mapStateToProps, mapDispatchToProps)(Component)</code>
       </pre>
     </div>
     <div class="c-code-column">
@@ -1260,22 +1269,418 @@
       </label>
       <pre>
         <code>const defaultState = { items: [], error: null }</code>
+        <code> </code>
         <code>function reducer (state = defaultState, action) {</code>
         <code>  switch (action.type) {</code>
         <code>    case '@@fetchItems/success' {</code>
         <code>      return { ...state, items: action.payload }</code>
         <code>    }</code>
         <code>    case '@@fetchItems/error' {</code>
-        <code>      return { ...state, error: action.error }</code>
+        <code>      return { ...state, error: action.payload }</code>
         <code>    }</code>
         <code>  }</code>
         <code>}</code>
       </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: React, Redux, Rx
+  </h2>
+  <div class="c-code">
+    <div class="c-code-column">
       <label>
-        effect.js :
+        component.js / render method :
       </label>
       <pre>
-        <code>TODO</code>
+        <code>render () {</code>
+        <code>  const { fetchItems, <mark>items, error</mark> } = <mark>this.state</mark></code>
+        <code>  return (</code>
+        <code>    &lt;div&gt;</code>
+        <code>      &lt;button onClick={fetchItems}&gt;</code>
+        <code>        Fetch Items</code>
+        <code>      &lt;/button&gt;</code>
+        <code>      { error === null</code>
+        <code>        ? <mark>&lt;ItemsList items={items} /&gt;</mark> }</code>
+        <code>        : <mark>&lt;Error error={error} /&gt;</mark></code>
+        <code>    &lt;/div&gt;</code>
+        <code>  )</code>
+        <code>}</code>
+      </pre>
+      <label>
+        component.js / connect :
+      </label>
+      <pre>
+        <code>function mapStateToProps (state) {</code>
+        <code>  const { <mark>items, error</mark> } = this.state</code>
+        <code>  return { <mark>items, error</mark> }</code>
+        <code>}</code>
+        <code>const mapDispatchToProps = { fetchItems }</code>
+        <code> </code>
+        <code>connect(mapStateToProps, mapDispatchToProps)(Component)</code>
+      </pre>
+    </div>
+    <div class="c-code-column">
+      <label>
+        actions.js :
+      </label>
+      <pre>
+        <code>const fetchItems = () => { type: '@@fetchItems' }</code>
+        <code>const fetchItemsSuccess = items =></code>
+        <code>  { type: '@@fetchItems/success', payload: items }</code>
+        <code>const fetchItemsError = error =></code>
+        <code>  { type: '@@fetchItems/error', payload: error }</code>
+      </pre>
+      <label>
+        reducer.js :
+      </label>
+      <pre>
+        <code><mark>const defaultState = { items: [], error: null }</mark></code>
+        <code> </code>
+        <code>function reducer (state = defaultState, action) {</code>
+        <code>  switch (action.type) {</code>
+        <code>    case '@@fetchItems/success' {</code>
+        <code>      return { <mark>...state, items: action.payload</mark> }</code>
+        <code>    }</code>
+        <code>    case '@@fetchItems/error' {</code>
+        <code>      return { <mark>...state, error: action.payload</mark> }</code>
+        <code>    }</code>
+        <code>  }</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: React, Redux, Rx
+  </h2>
+  <div class="c-code">
+    <div class="c-code-column">
+      <label>
+        component.js / render method :
+      </label>
+      <pre>
+        <code>render () {</code>
+        <code>  const { <mark>fetchItems</mark>, items, error } = <mark>this.state</mark></code>
+        <code>  return (</code>
+        <code>    &lt;div&gt;</code>
+        <code>      &lt;button <mark>onClick={fetchItems}</mark>&gt;</code>
+        <code>        Fetch Items</code>
+        <code>      &lt;/button&gt;</code>
+        <code>      { error === null</code>
+        <code>        ? &lt;ItemsList items={items} /&gt; }</code>
+        <code>        : &lt;Error error={error} /&gt;</code>
+        <code>    &lt;/div&gt;</code>
+        <code>  )</code>
+        <code>}</code>
+      </pre>
+      <label>
+        component.js / connect :
+      </label>
+      <pre>
+        <code>function mapStateToProps (state) {</code>
+        <code>  const { items, error } = this.state</code>
+        <code>  return { items, error }</code>
+        <code>}</code>
+        <code>const mapDispatchToProps = { <mark>fetchItems</mark> }</code>
+        <code> </code>
+        <code>connect(mapStateToProps, mapDispatchToProps)(Component)</code>
+      </pre>
+    </div>
+    <div class="c-code-column">
+      <label>
+        actions.js :
+      </label>
+      <pre>
+        <code><mark>const fetchItems = () => { type: '@@fetchItems' }</mark></code>
+        <code>const fetchItemsSuccess = items =></code>
+        <code>  { type: '@@fetchItems/success', payload: items }</code>
+        <code>const fetchItemsError = error =></code>
+        <code>  { type: '@@fetchItems/error', payload: error }</code>
+      </pre>
+      <label>
+        reducer.js :
+      </label>
+      <pre>
+        <code>const defaultState = { items: [], error: null }</code>
+        <code> </code>
+        <code>function reducer (state = defaultState, action) {</code>
+        <code>  switch (action.type) {</code>
+        <code>    case '@@fetchItems/success' {</code>
+        <code>      return { ...state, items: action.payload }</code>
+        <code>    }</code>
+        <code>    case '@@fetchItems/error' {</code>
+        <code>      return { ...state, error: action.payload }</code>
+        <code>    }</code>
+        <code>  }</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: React, Redux, Rx
+  </h2>
+  <div class="c-code">
+    <div class="c-code-column">
+      <label>
+        component.js / render method :
+      </label>
+      <pre>
+        <code>render () {</code>
+        <code>  const { fetchItems, items, error } = this.state</code>
+        <code>  return (</code>
+        <code>    &lt;div&gt;</code>
+        <code>      &lt;button onClick={fetchItems}&gt;</code>
+        <code>        Fetch Items</code>
+        <code>      &lt;/button&gt;</code>
+        <code>      { error === null</code>
+        <code>        ? &lt;ItemsList items={items} /&gt; }</code>
+        <code>        : &lt;Error error={error} /&gt;</code>
+        <code>    &lt;/div&gt;</code>
+        <code>  )</code>
+        <code>}</code>
+      </pre>
+      <label>
+        component.js / connect :
+      </label>
+      <pre>
+        <code>function mapStateToProps (state) {</code>
+        <code>  const { items, error } = this.state</code>
+        <code>  return { items, error }</code>
+        <code>}</code>
+        <code>const mapDispatchToProps = { fetchItems }</code>
+        <code> </code>
+        <code>connect(mapStateToProps, mapDispatchToProps)(Component)</code>
+      </pre>
+    </div>
+    <div class="c-code-column">
+      <label>
+        actions.js :
+      </label>
+      <pre>
+        <code>const fetchItems = () => { type: '@@fetchItems' }</code>
+        <code><mark>const fetchItemsSuccess = items =></mark></code>
+        <code>  <mark>{ type: '@@fetchItems/success', payload: items }</mark></code>
+        <code>const fetchItemsError = error =></code>
+        <code>  { type: '@@fetchItems/error', payload: error }</code>
+      </pre>
+      <label>
+        reducer.js :
+      </label>
+      <pre>
+        <code>const defaultState = { items: [], error: null }</code>
+        <code> </code>
+        <code>function reducer (state = defaultState, action) {</code>
+        <code>  switch (action.type) {</code>
+        <code>    <mark>case '@@fetchItems/success' {</mark></code>
+        <code>      <mark>return { ...state, items: action.payload }</mark></code>
+        <code>    }</code>
+        <code>    case '@@fetchItems/error' {</code>
+        <code>      return { ...state, error: action.payload }</code>
+        <code>    }</code>
+        <code>  }</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: React, Redux, Rx
+  </h2>
+  <div class="c-code">
+    <div class="c-code-column">
+      <label>
+        component.js / render method :
+      </label>
+      <pre>
+        <code>render () {</code>
+        <code>  const { fetchItems, items, error } = this.state</code>
+        <code>  return (</code>
+        <code>    &lt;div&gt;</code>
+        <code>      &lt;button onClick={fetchItems}&gt;</code>
+        <code>        Fetch Items</code>
+        <code>      &lt;/button&gt;</code>
+        <code>      { error === null</code>
+        <code>        ? &lt;ItemsList items={items} /&gt; }</code>
+        <code>        : &lt;Error error={error} /&gt;</code>
+        <code>    &lt;/div&gt;</code>
+        <code>  )</code>
+        <code>}</code>
+      </pre>
+      <label>
+        component.js / connect :
+      </label>
+      <pre>
+        <code>function mapStateToProps (state) {</code>
+        <code>  const { items, error } = this.state</code>
+        <code>  return { items, error }</code>
+        <code>}</code>
+        <code>const mapDispatchToProps = { fetchItems }</code>
+        <code> </code>
+        <code>connect(mapStateToProps, mapDispatchToProps)(Component)</code>
+      </pre>
+    </div>
+    <div class="c-code-column">
+      <label>
+        actions.js :
+      </label>
+      <pre>
+        <code>const fetchItems = () => { type: '@@fetchItems' }</code>
+        <code>const fetchItemsSuccess = items =></code>
+        <code>  { type: '@@fetchItems/success', payload: items }</code>
+        <code><mark>const fetchItemsError = error =></mark></code>
+        <code>  <mark>{ type: '@@fetchItems/error', payload: error }</mark></code>
+      </pre>
+      <label>
+        reducer.js :
+      </label>
+      <pre>
+        <code>const defaultState = { items: [], error: null }</code>
+        <code> </code>
+        <code>function reducer (state = defaultState, action) {</code>
+        <code>  switch (action.type) {</code>
+        <code>    case '@@fetchItems/success' {</code>
+        <code>      return { ...state, items: action.payload }</code>
+        <code>    }</code>
+        <code>    <mark>case '@@fetchItems/error' {</mark></code>
+        <code>      <mark>return { ...state, error: action.payload }</mark></code>
+        <code>    }</code>
+        <code>  }</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: React, Redux, Rx
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        effects.js :
+      </label>
+      <pre>
+        <code>function fetchItemsEpic (action$) {</code>
+        <code>  return action$</code>
+        <code>    .ofType('@@fetchItems')</code>
+        <code>    .switchMap(() =></code>
+        <code>      Observable</code>
+        <code>        .ajax({ method: 'GET', url: '/items' })</code>
+        <code>        .map(payload => fetchItemsSuccess(payload.response))</code>
+        <code>        .catch(payload => fetchItemsError(payload.response))</code>
+        <code>    )</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: React, Redux, Rx
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        effects.js :
+      </label>
+      <pre>
+        <code>function <mark>fetchItemsEpic</mark> (action$) {</code>
+        <code>  <mark>return action$</mark></code>
+        <code>    <mark>.ofType('@@fetchItems')</mark></code>
+        <code>    .switchMap(() =></code>
+        <code>      Observable</code>
+        <code>        .ajax({ method: 'GET', url: '/items' })</code>
+        <code>        .map(payload => fetchItemsSuccess(payload.response))</code>
+        <code>        .catch(payload => fetchItemsError(payload.response))</code>
+        <code>    )</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: React, Redux, Rx
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        effects.js :
+      </label>
+      <pre>
+        <code>function fetchItemsEpic (action$) {</code>
+        <code>  return action$</code>
+        <code>    .ofType('@@fetchItems')</code>
+        <code>    .switchMap(() =></code>
+        <code>      Observable</code>
+        <code>        <mark>.ajax({ method: 'GET', url: '/items' })</mark></code>
+        <code>        .map(payload => fetchItemsSuccess(payload.response))</code>
+        <code>        .catch(payload => fetchItemsError(payload.response))</code>
+        <code>    )</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: React, Redux, Rx
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        effects.js :
+      </label>
+      <pre>
+        <code>function fetchItemsEpic (action$) {</code>
+        <code>  return action$</code>
+        <code>    .ofType('@@fetchItems')</code>
+        <code>    .switchMap(() =></code>
+        <code>      Observable</code>
+        <code>        .ajax({ method: 'GET', url: '/items' })</code>
+        <code>        <mark>.map(payload => fetchItemsSuccess(payload.response))</mark></code>
+        <code>        .catch(payload => fetchItemsError(payload.response))</code>
+        <code>    )</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: React, Redux, Rx
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        effects.js :
+      </label>
+      <pre>
+        <code>function fetchItemsEpic (action$) {</code>
+        <code>  return action$</code>
+        <code>    .ofType('@@fetchItems')</code>
+        <code>    .switchMap(() =></code>
+        <code>      Observable</code>
+        <code>        .ajax({ method: 'GET', url: '/items' })</code>
+        <code>        .map(payload => fetchItemsSuccess(payload.response))</code>
+        <code>        <mark>.catch(payload => fetchItemsError(payload.response))</mark></code>
+        <code>    )</code>
+        <code>}</code>
       </pre>
     </div>
   </div>
