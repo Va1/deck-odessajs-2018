@@ -1342,10 +1342,10 @@
         <code>function reducer (state = defaultState, action) {</code>
         <code>  switch (action.type) {</code>
         <code>    case '@@fetchItems/success' {</code>
-        <code>      return { <mark>...state, items: action.payload</mark> }</code>
+        <code>      return { ...state, items: action.payload }</code>
         <code>    }</code>
         <code>    case '@@fetchItems/error' {</code>
-        <code>      return { <mark>...state, error: action.payload</mark> }</code>
+        <code>      return { ...state, error: action.payload }</code>
         <code>    }</code>
         <code>  }</code>
         <code>}</code>
@@ -1571,7 +1571,7 @@
         effects.js :
       </label>
       <pre>
-        <code>function fetchItemsEpic (action$) {</code>
+        <code>function fetchItemsEffect (action$) {</code>
         <code>  return action$</code>
         <code>    .ofType('@@fetchItems')</code>
         <code>    .switchMap(() =></code>
@@ -1596,7 +1596,7 @@
         effects.js :
       </label>
       <pre>
-        <code>function <mark>fetchItemsEpic</mark> (action$) {</code>
+        <code>function <mark>fetchItemsEffect</mark> (action$) {</code>
         <code>  <mark>return action$</mark></code>
         <code>    <mark>.ofType('@@fetchItems')</mark></code>
         <code>    .switchMap(() =></code>
@@ -1621,7 +1621,7 @@
         effects.js :
       </label>
       <pre>
-        <code>function fetchItemsEpic (action$) {</code>
+        <code>function fetchItemsEffect (action$) {</code>
         <code>  return action$</code>
         <code>    .ofType('@@fetchItems')</code>
         <code>    .switchMap(() =></code>
@@ -1646,7 +1646,7 @@
         effects.js :
       </label>
       <pre>
-        <code>function fetchItemsEpic (action$) {</code>
+        <code>function fetchItemsEffect (action$) {</code>
         <code>  return action$</code>
         <code>    .ofType('@@fetchItems')</code>
         <code>    .switchMap(() =></code>
@@ -1671,7 +1671,7 @@
         effects.js :
       </label>
       <pre>
-        <code>function fetchItemsEpic (action$) {</code>
+        <code>function fetchItemsEffect (action$) {</code>
         <code>  return action$</code>
         <code>    .ofType('@@fetchItems')</code>
         <code>    .switchMap(() =></code>
@@ -1688,11 +1688,467 @@
 
 <section class="slide c-slide">
   <h2>
-    Example: Angular 2, NgRx
+    Example: Angular 2+, NgRx
   </h2>
-  <pre>
-    <code>todo();</code>
-  </pre>
+  <div class="c-code">
+    <div class="c-code-column">
+      <label>
+        template.html :
+      </label>
+      <pre>
+        <code>&lt;div&gt;</code>
+        <code>  &lt;button (click)="fetchItems()"&gt;</code>
+        <code>    Fetch Items</code>
+        <code>  &lt;/button&gt;</code>
+        <code>  &lt;items-list</code>
+        <code>    *ngIf="(error$ | async) === null"</code>
+        <code>    [items]="items$ | async"&gt;</code>
+        <code>  &lt;/items-list&gt;</code>
+        <code>  &lt;error</code>
+        <code>    *ngIf="(error$ | async) !== null"</code>
+        <code>    [error]="error$ | async"&gt;</code>
+        <code>  &lt;/items-list&gt;</code>
+        <code>&lt;/div&gt;</code>
+      </pre>
+      <label>
+        component.js :
+      </label>
+      <pre>
+        <code>constructor (store) {</code>
+        <code>  this.store = store</code>
+        <code>  this.items$ = store.pipe(select('items', 'items'))</code>
+        <code>  this.error$ = store.pipe(select('items', 'error'))</code>
+        <code>}</code>
+        <code>fetchItems () {</code>
+        <code>  this.store.dispatch(fetchItems())</code>
+        <code>}</code>
+      </pre>
+    </div>
+    <div class="c-code-column">
+      <label>
+        actions.js :
+      </label>
+      <pre>
+        <code>const fetchItems = () => { type: '@@fetchItems' }</code>
+        <code>const fetchItemsSuccess = items =></code>
+        <code>  { type: '@@fetchItems/success', payload: items }</code>
+        <code>const fetchItemsError = error =></code>
+        <code>  { type: '@@fetchItems/error', payload: error }</code>
+      </pre>
+      <label>
+        reducer.js :
+      </label>
+      <pre>
+        <code>const defaultState = { items: [], error: null }</code>
+        <code> </code>
+        <code>function reducer (state = defaultState, action) {</code>
+        <code>  switch (action.type) {</code>
+        <code>    case '@@fetchItems/success' {</code>
+        <code>      return { ...state, items: action.payload }</code>
+        <code>    }</code>
+        <code>    case '@@fetchItems/error' {</code>
+        <code>      return { ...state, error: action.payload }</code>
+        <code>    }</code>
+        <code>  }</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Angular 2+, NgRx
+  </h2>
+  <div class="c-code">
+    <div class="c-code-column">
+      <label>
+        template.html :
+      </label>
+      <pre>
+        <code>&lt;div&gt;</code>
+        <code>  &lt;button (click)="fetchItems()"&gt;</code>
+        <code>    Fetch Items</code>
+        <code>  &lt;/button&gt;</code>
+        <code>  <mark>&lt;items-list</mark></code>
+        <code>    <mark>*ngIf="(error$ | async) === null"</mark></code>
+        <code>    <mark>[items]="items$ | async"&gt;</mark></code>
+        <code>  <mark>&lt;/items-list&gt;</mark></code>
+        <code>  <mark>&lt;error</mark></code>
+        <code>    <mark>*ngIf="(error$ | async) !== null"</mark></code>
+        <code>    <mark>[error]="error$ | async"&gt;</mark></code>
+        <code>  <mark>&lt;/items-list&gt;</mark></code>
+        <code>&lt;/div&gt;</code>
+      </pre>
+      <label>
+        component.js :
+      </label>
+      <pre>
+        <code>constructor (store) {</code>
+        <code>  this.store = store</code>
+        <code>  <mark>this.items$ = store.pipe(select('items', 'items'))</mark></code>
+        <code>  <mark>this.error$ = store.pipe(select('items', 'error'))</mark></code>
+        <code>}</code>
+        <code>fetchItems () {</code>
+        <code>  this.store.dispatch(fetchItems())</code>
+        <code>}</code>
+      </pre>
+    </div>
+    <div class="c-code-column">
+      <label>
+        actions.js :
+      </label>
+      <pre>
+        <code>const fetchItems = () => { type: '@@fetchItems' }</code>
+        <code>const fetchItemsSuccess = items =></code>
+        <code>  { type: '@@fetchItems/success', payload: items }</code>
+        <code>const fetchItemsError = error =></code>
+        <code>  { type: '@@fetchItems/error', payload: error }</code>
+      </pre>
+      <label>
+        reducer.js :
+      </label>
+      <pre>
+        <code><mark>const defaultState = { items: [], error: null }</mark></code>
+        <code> </code>
+        <code>function reducer (state = defaultState, action) {</code>
+        <code>  switch (action.type) {</code>
+        <code>    case '@@fetchItems/success' {</code>
+        <code>      return { ...state, items: action.payload }</code>
+        <code>    }</code>
+        <code>    case '@@fetchItems/error' {</code>
+        <code>      return { ...state, error: action.payload }</code>
+        <code>    }</code>
+        <code>  }</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Angular 2+, NgRx
+  </h2>
+  <div class="c-code">
+    <div class="c-code-column">
+      <label>
+        template.html :
+      </label>
+      <pre>
+        <code>&lt;div&gt;</code>
+        <code>  &lt;button <mark>(click)="fetchItems()"</mark>&gt;</code>
+        <code>    Fetch Items</code>
+        <code>  &lt;/button&gt;</code>
+        <code>  &lt;items-list</code>
+        <code>    *ngIf="(error$ | async) === null"</code>
+        <code>    [items]="items$ | async"&gt;</code>
+        <code>  &lt;/items-list&gt;</code>
+        <code>  &lt;error</code>
+        <code>    *ngIf="(error$ | async) !== null"</code>
+        <code>    [error]="error$ | async"&gt;</code>
+        <code>  &lt;/items-list&gt;</code>
+        <code>&lt;/div&gt;</code>
+      </pre>
+      <label>
+        component.js :
+      </label>
+      <pre>
+        <code>constructor (store) {</code>
+        <code>  this.store = store</code>
+        <code>  this.items$ = store.pipe(select('items', 'items'))</code>
+        <code>  this.error$ = store.pipe(select('items', 'error'))</code>
+        <code>}</code>
+        <code><mark>fetchItems</mark> () {</code>
+        <code>  <mark>this.store.dispatch(fetchItems())</mark></code>
+        <code>}</code>
+      </pre>
+    </div>
+    <div class="c-code-column">
+      <label>
+        actions.js :
+      </label>
+      <pre>
+        <code><mark>const fetchItems = () => { type: '@@fetchItems' }</mark></code>
+        <code>const fetchItemsSuccess = items =></code>
+        <code>  { type: '@@fetchItems/success', payload: items }</code>
+        <code>const fetchItemsError = error =></code>
+        <code>  { type: '@@fetchItems/error', payload: error }</code>
+      </pre>
+      <label>
+        reducer.js :
+      </label>
+      <pre>
+        <code>const defaultState = { items: [], error: null }</code>
+        <code> </code>
+        <code>function reducer (state = defaultState, action) {</code>
+        <code>  switch (action.type) {</code>
+        <code>    case '@@fetchItems/success' {</code>
+        <code>      return { ...state, items: action.payload }</code>
+        <code>    }</code>
+        <code>    case '@@fetchItems/error' {</code>
+        <code>      return { ...state, error: action.payload }</code>
+        <code>    }</code>
+        <code>  }</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Angular 2+, NgRx
+  </h2>
+  <div class="c-code">
+    <div class="c-code-column">
+      <label>
+        template.html :
+      </label>
+      <pre>
+        <code>&lt;div&gt;</code>
+        <code>  &lt;button (click)="fetchItems()"&gt;</code>
+        <code>    Fetch Items</code>
+        <code>  &lt;/button&gt;</code>
+        <code>  &lt;items-list</code>
+        <code>    *ngIf="(error$ | async) === null"</code>
+        <code>    [items]="items$ | async"&gt;</code>
+        <code>  &lt;/items-list&gt;</code>
+        <code>  &lt;error</code>
+        <code>    *ngIf="(error$ | async) !== null"</code>
+        <code>    [error]="error$ | async"&gt;</code>
+        <code>  &lt;/items-list&gt;</code>
+        <code>&lt;/div&gt;</code>
+      </pre>
+      <label>
+        component.js :
+      </label>
+      <pre>
+        <code>constructor (store) {</code>
+        <code>  this.store = store</code>
+        <code>  this.items$ = store.pipe(select('items', 'items'))</code>
+        <code>  this.error$ = store.pipe(select('items', 'error'))</code>
+        <code>}</code>
+        <code>fetchItems () {</code>
+        <code>  this.store.dispatch(fetchItems())</code>
+        <code>}</code>
+      </pre>
+    </div>
+    <div class="c-code-column">
+      <label>
+        actions.js :
+      </label>
+      <pre>
+        <code>const fetchItems = () => { type: '@@fetchItems' }</code>
+        <code><mark>const fetchItemsSuccess = items =></mark></code>
+        <code>  <mark>{ type: '@@fetchItems/success', payload: items }</mark></code>
+        <code>const fetchItemsError = error =></code>
+        <code>  { type: '@@fetchItems/error', payload: error }</code>
+      </pre>
+      <label>
+        reducer.js :
+      </label>
+      <pre>
+        <code>const defaultState = { items: [], error: null }</code>
+        <code> </code>
+        <code>function reducer (state = defaultState, action) {</code>
+        <code>  switch (action.type) {</code>
+        <code>    <mark>case '@@fetchItems/success' {</mark></code>
+        <code>      <mark>return { ...state, items: action.payload }</mark></code>
+        <code>    }</code>
+        <code>    case '@@fetchItems/error' {</code>
+        <code>      return { ...state, error: action.payload }</code>
+        <code>    }</code>
+        <code>  }</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Angular 2+, NgRx
+  </h2>
+  <div class="c-code">
+    <div class="c-code-column">
+      <label>
+        template.html :
+      </label>
+      <pre>
+        <code>&lt;div&gt;</code>
+        <code>  &lt;button (click)="fetchItems()"&gt;</code>
+        <code>    Fetch Items</code>
+        <code>  &lt;/button&gt;</code>
+        <code>  &lt;items-list</code>
+        <code>    *ngIf="(error$ | async) === null"</code>
+        <code>    [items]="items$ | async"&gt;</code>
+        <code>  &lt;/items-list&gt;</code>
+        <code>  &lt;error</code>
+        <code>    *ngIf="(error$ | async) !== null"</code>
+        <code>    [error]="error$ | async"&gt;</code>
+        <code>  &lt;/items-list&gt;</code>
+        <code>&lt;/div&gt;</code>
+      </pre>
+      <label>
+        component.js :
+      </label>
+      <pre>
+        <code>constructor (store) {</code>
+        <code>  this.store = store</code>
+        <code>  this.items$ = store.pipe(select('items', 'items'))</code>
+        <code>  this.error$ = store.pipe(select('items', 'error'))</code>
+        <code>}</code>
+        <code>fetchItems () {</code>
+        <code>  this.store.dispatch(fetchItems())</code>
+        <code>}</code>
+      </pre>
+    </div>
+    <div class="c-code-column">
+      <label>
+        actions.js :
+      </label>
+      <pre>
+        <code>const fetchItems = () => { type: '@@fetchItems' }</code>
+        <code>const fetchItemsSuccess = items =></code>
+        <code>  { type: '@@fetchItems/success', payload: items }</code>
+        <code><mark>const fetchItemsError = error =></mark></code>
+        <code>  <mark>{ type: '@@fetchItems/error', payload: error }</mark></code>
+      </pre>
+      <label>
+        reducer.js :
+      </label>
+      <pre>
+        <code>const defaultState = { items: [], error: null }</code>
+        <code> </code>
+        <code>function reducer (state = defaultState, action) {</code>
+        <code>  switch (action.type) {</code>
+        <code>    case '@@fetchItems/success' {</code>
+        <code>      return { ...state, items: action.payload }</code>
+        <code>    }</code>
+        <code>    <mark>case '@@fetchItems/error' {</mark></code>
+        <code>      <mark>return { ...state, error: action.payload }</mark></code>
+        <code>    }</code>
+        <code>  }</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Angular 2+, NgRx
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        effects.js :
+      </label>
+      <pre>
+        <code>fetchItemsEffect$ = this.action$</code>
+        <code>  .ofType('@@fetchItems')</code>
+        <code>  .switchMap(() =></code>
+        <code>    Observable</code>
+        <code>      .ajax({ method: 'GET', url: '/items' })</code>
+        <code>      .map(payload => fetchItemsSuccess(payload.response))</code>
+        <code>      .catch(payload => fetchItemsError(payload.response))</code>
+        <code>  )</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Angular 2+, NgRx
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        effects.js :
+      </label>
+      <pre>
+        <code><mark>fetchItemsEffect$ = this.action$</mark></code>
+        <code>  <mark>.ofType('@@fetchItems')</mark></code>
+        <code>  .switchMap(() =></code>
+        <code>    Observable</code>
+        <code>      .ajax({ method: 'GET', url: '/items' })</code>
+        <code>      .map(payload => fetchItemsSuccess(payload.response))</code>
+        <code>      .catch(payload => fetchItemsError(payload.response))</code>
+        <code>  )</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Angular 2+, NgRx
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        effects.js :
+      </label>
+      <pre>
+        <code>fetchItemsEffect$ = this.action$</code>
+        <code>  .ofType('@@fetchItems')</code>
+        <code>  .switchMap(() =></code>
+        <code>    Observable</code>
+        <code>      <mark>.ajax({ method: 'GET', url: '/items' })</mark></code>
+        <code>      .map(payload => fetchItemsSuccess(payload.response))</code>
+        <code>      .catch(payload => fetchItemsError(payload.response))</code>
+        <code>  )</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Angular 2+, NgRx
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        effects.js :
+      </label>
+      <pre>
+        <code>fetchItemsEffect$ = this.action$</code>
+        <code>  .ofType('@@fetchItems')</code>
+        <code>  .switchMap(() =></code>
+        <code>    Observable</code>
+        <code>      .ajax({ method: 'GET', url: '/items' })</code>
+        <code>      <mark>.map(payload => fetchItemsSuccess(payload.response))</mark></code>
+        <code>      .catch(payload => fetchItemsError(payload.response))</code>
+        <code>  )</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Angular 2+, NgRx
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        effects.js :
+      </label>
+      <pre>
+        <code>fetchItemsEffect$ = this.action$</code>
+        <code>  .ofType('@@fetchItems')</code>
+        <code>  .switchMap(() =></code>
+        <code>    Observable</code>
+        <code>      .ajax({ method: 'GET', url: '/items' })</code>
+        <code>      .map(payload => fetchItemsSuccess(payload.response))</code>
+        <code>      <mark>.catch(payload => fetchItemsError(payload.response))</mark></code>
+        <code>  )</code>
+      </pre>
+    </div>
+  </div>
 </section>
 
 <section class="slide c-slide">
