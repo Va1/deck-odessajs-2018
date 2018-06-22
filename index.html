@@ -2961,9 +2961,186 @@
   <h2>
     Example: Node, Rx
   </h2>
-  <pre>
-    <code>todo();</code>
-  </pre>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        server.js :
+      </label>
+      <pre>
+        <code>const context$ = new Rx.Subject()</code>
+        <code> </code>
+        <code>function handleFetchItemsRequest (context) {</code>
+        <code>  context.response.writeHead(200, { 'Content-Type': 'application/json' })</code>
+        <code>  context.response.end(JSON.stringify(items))</code>
+        <code>}</code>
+        <code> </code>
+        <code>context$</code>
+        <code>  .do(context => { console.log('request from ip:', context.request.connection.remoteAddress) })</code>
+        <code>  .subscribe(handleFetchItemsRequest)</code>
+        <code> </code>
+        <code>const server = http.createServer((request, response) => {</code>
+        <code>  context$.next({ request, response })</code>
+        <code>})</code>
+        <code> </code>
+        <code>server.listen(3000)</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Node, Rx
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        server.js :
+      </label>
+      <pre>
+        <code><mark>const context$ = new Rx.Subject()</mark></code>
+        <code> </code>
+        <code>function handleFetchItemsRequest (context) {</code>
+        <code>  context.response.writeHead(200, { 'Content-Type': 'application/json' })</code>
+        <code>  context.response.end(JSON.stringify(items))</code>
+        <code>}</code>
+        <code> </code>
+        <code>context$</code>
+        <code>  .do(context => { console.log('request from ip:', context.request.connection.remoteAddress) })</code>
+        <code>  .subscribe(handleFetchItemsRequest)</code>
+        <code> </code>
+        <code>const server = http.createServer((request, response) => {</code>
+        <code>  context$.next({ request, response })</code>
+        <code>})</code>
+        <code> </code>
+        <code>server.listen(3000)</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Node, Rx
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        server.js :
+      </label>
+      <pre>
+        <code>const context$ = new Rx.Subject()</code>
+        <code> </code>
+        <code>function <mark>handleFetchItemsRequest</mark> (context) {</code>
+        <code>  <mark>context.response.writeHead(200, { 'Content-Type': 'application/json' })</mark></code>
+        <code>  <mark>context.response.end(JSON.stringify(items))</mark></code>
+        <code>}</code>
+        <code> </code>
+        <code>context$</code>
+        <code>  .do(context => { console.log('request from ip:', context.request.connection.remoteAddress) })</code>
+        <code>  .subscribe(handleFetchItemsRequest)</code>
+        <code> </code>
+        <code>const server = http.createServer((request, response) => {</code>
+        <code>  context$.next({ request, response })</code>
+        <code>})</code>
+        <code> </code>
+        <code>server.listen(3000)</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Node, Rx
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        server.js :
+      </label>
+      <pre>
+        <code>const context$ = new Rx.Subject()</code>
+        <code> </code>
+        <code>function handleFetchItemsRequest (context) {</code>
+        <code>  context.response.writeHead(200, { 'Content-Type': 'application/json' })</code>
+        <code>  context.response.end(JSON.stringify(items));</code>
+        <code>}</code>
+        <code> </code>
+        <code>context$</code>
+        <code>  <mark>.do(context => { console.log('request from ip:', context.request.connection.remoteAddress) })</mark></code>
+        <code>  .subscribe(handleFetchItemsRequest)</code>
+        <code> </code>
+        <code>const server = http.createServer((request, response) => {</code>
+        <code>  context$.next({ request, response })</code>
+        <code>})</code>
+        <code> </code>
+        <code>server.listen(3000)</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Node, Rx
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        server.js :
+      </label>
+      <pre>
+        <code>const context$ = new Rx.Subject()</code>
+        <code> </code>
+        <code>function handleFetchItemsRequest (context) {</code>
+        <code>  context.response.writeHead(200, { 'Content-Type': 'application/json' })</code>
+        <code>  context.response.end(JSON.stringify(items));</code>
+        <code>}</code>
+        <code> </code>
+        <code>context$</code>
+        <code>  .do(context => { console.log('request from ip:', context.request.connection.remoteAddress) })</code>
+        <code>  <mark>.subscribe(handleFetchItemsRequest)</mark></code>
+        <code> </code>
+        <code>const server = http.createServer((request, response) => {</code>
+        <code>  context$.next({ request, response })</code>
+        <code>})</code>
+        <code> </code>
+        <code>server.listen(3000)</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Node, Rx
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        server.js :
+      </label>
+      <pre>
+        <code>const context$ = new Rx.Subject()</code>
+        <code> </code>
+        <code>function handleFetchItemsRequest (context) {</code>
+        <code>  context.response.writeHead(200, { 'Content-Type': 'application/json' })</code>
+        <code>  context.response.end(JSON.stringify(items));</code>
+        <code>}</code>
+        <code> </code>
+        <code>context$</code>
+        <code>  .do(context => { console.log('request from ip:', context.request.connection.remoteAddress) })</code>
+        <code>  .subscribe(handleFetchItemsRequest)</code>
+        <code> </code>
+        <code>const server = <mark>http.createServer((request, response) => {</mark></code>
+        <code>  <mark>context$.next({ request, response })</mark></code>
+        <code>})</code>
+        <code> </code>
+        <code>server.listen(3000)</code>
+      </pre>
+    </div>
+  </div>
 </section>
 
 <section class="slide c-slide">
