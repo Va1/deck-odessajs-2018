@@ -2687,9 +2687,245 @@
   <h2>
     Example: Cycle, Rx
   </h2>
-  <pre>
-    <code>todo();</code>
-  </pre>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        component.js :
+      </label>
+      <pre>
+        <code>function component (sources) {</code>
+        <code>  const buttonClick$ = sources.DOM.select('button').events('click')</code>
+        <code>  const fetchItemsResult$ = buttonClick$</code>
+        <code>    .switchMap(() => Observable.ajax({ method: 'GET', url: '/items' }))</code>
+        <code>    .catch(payload => Observable.of(payload.response))</code>
+        <code>    .map(payload => payload.response)</code>
+        <code> </code>
+        <code>  const vdom$ = fetchItemsResult$.map(result => (</code>
+        <code>    &lt;div&gt;</code>
+        <code>      &lt;button&gt;</code>
+        <code>        Fetch Items</code>
+        <code>      &lt;/button&gt;</code>
+        <code>      { Array.isArray(result)</code>
+        <code>        ? &lt;ItemsList items={result} /&gt; }</code>
+        <code>        : &lt;Error error={result} /&gt;</code>
+        <code>    &lt;/div&gt;</code>
+        <code>  )</code>
+        <code> </code>
+        <code>  return { DOM: vdom$ }</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Cycle, Rx
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        component.js :
+      </label>
+      <pre>
+        <code>function component (<mark>sources</mark>) {</code>
+        <code>  const buttonClick$ = <mark>sources.DOM</mark>.select('button').events('click')</code>
+        <code>  const fetchItemsResult$ = buttonClick$</code>
+        <code>    .switchMap(() => Observable.ajax({ method: 'GET', url: '/items' }))</code>
+        <code>    .catch(payload => Observable.of(payload.response))</code>
+        <code>    .map(payload => payload.response)</code>
+        <code> </code>
+        <code>  const vdom$ = fetchItemsResult$.map(result => (</code>
+        <code>    &lt;div&gt;</code>
+        <code>      &lt;button&gt;</code>
+        <code>        Fetch Items</code>
+        <code>      &lt;/button&gt;</code>
+        <code>      { Array.isArray(result)</code>
+        <code>        ? &lt;ItemsList items={result} /&gt; }</code>
+        <code>        : &lt;Error error={result} /&gt;</code>
+        <code>    &lt;/div&gt;</code>
+        <code>  )</code>
+        <code> </code>
+        <code>  <mark>return { DOM: vdom$ }</mark></code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Cycle, Rx
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        component.js :
+      </label>
+      <pre>
+        <code>function component (sources) {</code>
+        <code>  <mark>const buttonClick$ = sources.DOM.select('button').events('click')</mark></code>
+        <code>  const fetchItemsResult$ = buttonClick$</code>
+        <code>    .switchMap(() => Observable.ajax({ method: 'GET', url: '/items' }))</code>
+        <code>    .catch(payload => Observable.of(payload.response))</code>
+        <code>    .map(payload => payload.response)</code>
+        <code> </code>
+        <code>  const vdom$ = fetchItemsResult$.map(result => (</code>
+        <code>    &lt;div&gt;</code>
+        <code>      <mark>&lt;button&gt;</mark></code>
+        <code>        <mark>Fetch Items</mark></code>
+        <code>      <mark>&lt;/button&gt;</mark></code>
+        <code>      { Array.isArray(result)</code>
+        <code>        ? &lt;ItemsList items={result} /&gt; }</code>
+        <code>        : &lt;Error error={result} /&gt;</code>
+        <code>    &lt;/div&gt;</code>
+        <code>  )</code>
+        <code> </code>
+        <code>  return { DOM: vdom$ }</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Cycle, Rx
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        component.js :
+      </label>
+      <pre>
+        <code>function component (sources) {</code>
+        <code>  const buttonClick$ = sources.DOM.select('button').events('click')</code>
+        <code>  <mark>const fetchItemsResult$ = buttonClick$</mark></code>
+        <code>    <mark>.switchMap(() => Observable.ajax({ method: 'GET', url: '/items' }))</mark></code>
+        <code>    .catch(payload => Observable.of(payload.response))</code>
+        <code>    .map(payload => payload.response)</code>
+        <code> </code>
+        <code>  const vdom$ = fetchItemsResult$.map(result => (</code>
+        <code>    &lt;div&gt;</code>
+        <code>      &lt;button&gt;</code>
+        <code>        Fetch Items</code>
+        <code>      &lt;/button&gt;</code>
+        <code>      { Array.isArray(result)</code>
+        <code>        ? &lt;ItemsList items={result} /&gt; }</code>
+        <code>        : &lt;Error error={result} /&gt;</code>
+        <code>    &lt;/div&gt;</code>
+        <code>  )</code>
+        <code> </code>
+        <code>  return { DOM: vdom$ }</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Cycle, Rx
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        component.js :
+      </label>
+      <pre>
+        <code>function component (sources) {</code>
+        <code>  const buttonClick$ = sources.DOM.select('button').events('click')</code>
+        <code>  const fetchItemsResult$ = buttonClick$</code>
+        <code>    .switchMap(() => Observable.ajax({ method: 'GET', url: '/items' }))</code>
+        <code>    <mark>.catch(payload => Observable.of(payload.response))</mark></code>
+        <code>    .map(payload => payload.response)</code>
+        <code> </code>
+        <code>  const vdom$ = fetchItemsResult$.map(result => (</code>
+        <code>    &lt;div&gt;</code>
+        <code>      &lt;button&gt;</code>
+        <code>        Fetch Items</code>
+        <code>      &lt;/button&gt;</code>
+        <code>      { Array.isArray(result)</code>
+        <code>        ? &lt;ItemsList items={result} /&gt; }</code>
+        <code>        : &lt;Error error={result} /&gt;</code>
+        <code>    &lt;/div&gt;</code>
+        <code>  )</code>
+        <code> </code>
+        <code>  return { DOM: vdom$ }</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Cycle, Rx
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        component.js :
+      </label>
+      <pre>
+        <code>function component (sources) {</code>
+        <code>  const buttonClick$ = sources.DOM.select('button').events('click')</code>
+        <code>  const fetchItemsResult$ = buttonClick$</code>
+        <code>    .switchMap(() => Observable.ajax({ method: 'GET', url: '/items' }))</code>
+        <code>    .catch(payload => Observable.of(payload.response))</code>
+        <code>    <mark>.map(payload => payload.response)</mark></code>
+        <code> </code>
+        <code>  const vdom$ = fetchItemsResult$.map(result => (</code>
+        <code>    &lt;div&gt;</code>
+        <code>      &lt;button&gt;</code>
+        <code>        Fetch Items</code>
+        <code>      &lt;/button&gt;</code>
+        <code>      { Array.isArray(result)</code>
+        <code>        ? &lt;ItemsList items={result} /&gt; }</code>
+        <code>        : &lt;Error error={result} /&gt;</code>
+        <code>    &lt;/div&gt;</code>
+        <code>  )</code>
+        <code> </code>
+        <code>  return { DOM: vdom$ }</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Cycle, Rx
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        component.js :
+      </label>
+      <pre>
+        <code>function component (sources) {</code>
+        <code>  const buttonClick$ = sources.DOM.select('button').events('click')</code>
+        <code>  const fetchItemsResult$ = buttonClick$</code>
+        <code>    .switchMap(() => Observable.ajax({ method: 'GET', url: '/items' }))</code>
+        <code>    .catch(payload => Observable.of(payload.response))</code>
+        <code>    .map(payload => payload.response)</code>
+        <code> </code>
+        <code>  const vdom$ = <mark>fetchItemsResult$.map</mark>(result => (</code>
+        <code>    &lt;div&gt;</code>
+        <code>      &lt;button&gt;</code>
+        <code>        Fetch Items</code>
+        <code>      &lt;/button&gt;</code>
+        <code>      { Array.isArray(result)</code>
+        <code>        ? &lt;ItemsList items={result} /&gt; }</code>
+        <code>        : &lt;Error error={result} /&gt;</code>
+        <code>    &lt;/div&gt;</code>
+        <code>  )</code>
+        <code> </code>
+        <code>  return { DOM: vdom$ }</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
 </section>
 
 <section class="slide c-slide">
