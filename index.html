@@ -2199,9 +2199,456 @@
   <h2>
     Example: Rx complex async flow
   </h2>
-  <pre>
-    <code>todo();</code>
-  </pre>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        effects.js :
+      </label>
+      <pre>
+        <code>function fetchItemsEffect (action$) {</code>
+        <code>  const emitPending = () => Observable.of({ type: '@@fetchItems/pending' })</code>
+        <code>  const emitStepTwo = () => Observable.of({ type: '@@fetchItems/stepTwo' })</code>
+        <code>  const fetchItems = () => Observable.ajax({ method: 'GET', url: '/items' })</code>
+        <code>  const fetchItemsMeta = items => Observable.ajax({ method: 'GET', url: '/items/meta', payload: items })</code>
+        <code> </code>
+        <code>  return action$</code>
+        <code>    .ofType('@@fetchItems')</code>
+        <code>    .switchMap(() =></code>
+        <code>      Observable.merge(</code>
+        <code>        emitPending(),</code>
+        <code>        fetchItems()</code>
+        <code>          .switchMap(items => Observable.merge(</code>
+        <code>            emitStepTwo(),</code>
+        <code>            fetchItemsMeta(items)</code>
+        <code>              .delay(1000)</code>
+        <code>              .switchMap(payload => fetchItemsSuccess(payload.response))</code>
+        <code>          ))</code>
+        <code>      )</code>
+        <code>      .catch(payload => fetchItemsError(payload.response))</code>
+        <code>      .takeUntil(action$.ofType('@@fetchItems/cancel'))</code>
+        <code>    )</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Rx complex async flow
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        effects.js :
+      </label>
+      <pre>
+        <code>function fetchItemsEffect (action$) {</code>
+        <code>  <mark>const emitPending = () => Observable.of({ type: '@@fetchItems/pending' })</mark></code>
+        <code>  const emitStepTwo = () => Observable.of({ type: '@@fetchItems/stepTwo' })</code>
+        <code>  const fetchItems = () => Observable.ajax({ method: 'GET', url: '/items' })</code>
+        <code>  const fetchItemsMeta = items => Observable.ajax({ method: 'GET', url: '/items/meta', payload: items })</code>
+        <code> </code>
+        <code>  return action$</code>
+        <code>    .ofType('@@fetchItems')</code>
+        <code>    .switchMap(() =></code>
+        <code>      Observable.merge(</code>
+        <code>        emitPending(),</code>
+        <code>        fetchItems()</code>
+        <code>          .switchMap(items => Observable.merge(</code>
+        <code>            emitStepTwo(),</code>
+        <code>            fetchItemsMeta(items)</code>
+        <code>              .delay(1000)</code>
+        <code>              .switchMap(payload => fetchItemsSuccess(payload.response))</code>
+        <code>          ))</code>
+        <code>      )</code>
+        <code>      .catch(payload => fetchItemsError(payload.response))</code>
+        <code>      .takeUntil(action$.ofType('@@fetchItems/cancel'))</code>
+        <code>    )</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Rx complex async flow
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        effects.js :
+      </label>
+      <pre>
+        <code>function fetchItemsEffect (action$) {</code>
+        <code>  const emitPending = () => Observable.of({ type: '@@fetchItems/pending' })</code>
+        <code>  <mark>const emitStepTwo = () => Observable.of({ type: '@@fetchItems/stepTwo' })</mark></code>
+        <code>  const fetchItems = () => Observable.ajax({ method: 'GET', url: '/items' })</code>
+        <code>  const fetchItemsMeta = items => Observable.ajax({ method: 'GET', url: '/items/meta', payload: items })</code>
+        <code> </code>
+        <code>  return action$</code>
+        <code>    .ofType('@@fetchItems')</code>
+        <code>    .switchMap(() =></code>
+        <code>      Observable.merge(</code>
+        <code>        emitPending(),</code>
+        <code>        fetchItems()</code>
+        <code>          .switchMap(items => Observable.merge(</code>
+        <code>            emitStepTwo(),</code>
+        <code>            fetchItemsMeta(items)</code>
+        <code>              .delay(1000)</code>
+        <code>              .switchMap(payload => fetchItemsSuccess(payload.response))</code>
+        <code>          ))</code>
+        <code>      )</code>
+        <code>      .catch(payload => fetchItemsError(payload.response))</code>
+        <code>      .takeUntil(action$.ofType('@@fetchItems/cancel'))</code>
+        <code>    )</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Rx complex async flow
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        effects.js :
+      </label>
+      <pre>
+        <code>function fetchItemsEffect (action$) {</code>
+        <code>  const emitPending = () => Observable.of({ type: '@@fetchItems/pending' })</code>
+        <code>  const emitStepTwo = () => Observable.of({ type: '@@fetchItems/stepTwo' })</code>
+        <code>  <mark>const fetchItems = () => Observable.ajax({ method: 'GET', url: '/items' })</mark></code>
+        <code>  const fetchItemsMeta = items => Observable.ajax({ method: 'GET', url: '/items/meta', payload: items })</code>
+        <code> </code>
+        <code>  return action$</code>
+        <code>    .ofType('@@fetchItems')</code>
+        <code>    .switchMap(() =></code>
+        <code>      Observable.merge(</code>
+        <code>        emitPending(),</code>
+        <code>        fetchItems()</code>
+        <code>          .switchMap(items => Observable.merge(</code>
+        <code>            emitStepTwo(),</code>
+        <code>            fetchItemsMeta(items)</code>
+        <code>              .delay(1000)</code>
+        <code>              .switchMap(payload => fetchItemsSuccess(payload.response))</code>
+        <code>          ))</code>
+        <code>      )</code>
+        <code>      .catch(payload => fetchItemsError(payload.response))</code>
+        <code>      .takeUntil(action$.ofType('@@fetchItems/cancel'))</code>
+        <code>    )</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Rx complex async flow
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        effects.js :
+      </label>
+      <pre>
+        <code>function fetchItemsEffect (action$) {</code>
+        <code>  const emitPending = () => Observable.of({ type: '@@fetchItems/pending' })</code>
+        <code>  const emitStepTwo = () => Observable.of({ type: '@@fetchItems/stepTwo' })</code>
+        <code>  const fetchItems = () => Observable.ajax({ method: 'GET', url: '/items' })</code>
+        <code>  <mark>const fetchItemsMeta = items => Observable.ajax({ method: 'GET', url: '/items/meta', payload: items })</mark></code>
+        <code> </code>
+        <code>  return action$</code>
+        <code>    .ofType('@@fetchItems')</code>
+        <code>    .switchMap(() =></code>
+        <code>      Observable.merge(</code>
+        <code>        emitPending(),</code>
+        <code>        fetchItems()</code>
+        <code>          .switchMap(items => Observable.merge(</code>
+        <code>            emitStepTwo(),</code>
+        <code>            fetchItemsMeta(items)</code>
+        <code>              .delay(1000)</code>
+        <code>              .switchMap(payload => fetchItemsSuccess(payload.response))</code>
+        <code>          ))</code>
+        <code>      )</code>
+        <code>      .catch(payload => fetchItemsError(payload.response))</code>
+        <code>      .takeUntil(action$.ofType('@@fetchItems/cancel'))</code>
+        <code>    )</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Rx complex async flow
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        effects.js :
+      </label>
+      <pre>
+        <code>function fetchItemsEffect (action$) {</code>
+        <code>  const emitPending = () => Observable.of({ type: '@@fetchItems/pending' })</code>
+        <code>  const emitStepTwo = () => Observable.of({ type: '@@fetchItems/stepTwo' })</code>
+        <code>  const fetchItems = () => Observable.ajax({ method: 'GET', url: '/items' })</code>
+        <code>  const fetchItemsMeta = items => Observable.ajax({ method: 'GET', url: '/items/meta', payload: items })</code>
+        <code> </code>
+        <code>  return <mark>action$</mark></code>
+        <code>    <mark>.ofType('@@fetchItems')</mark></code>
+        <code>    .switchMap(() =></code>
+        <code>      Observable.merge(</code>
+        <code>        emitPending(),</code>
+        <code>        fetchItems()</code>
+        <code>          .switchMap(items => Observable.merge(</code>
+        <code>            emitStepTwo(),</code>
+        <code>            fetchItemsMeta(items)</code>
+        <code>              .delay(1000)</code>
+        <code>              .switchMap(payload => fetchItemsSuccess(payload.response))</code>
+        <code>          ))</code>
+        <code>      )</code>
+        <code>      .catch(payload => fetchItemsError(payload.response))</code>
+        <code>      .takeUntil(action$.ofType('@@fetchItems/cancel'))</code>
+        <code>    )</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Rx complex async flow
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        effects.js :
+      </label>
+      <pre>
+        <code>function fetchItemsEffect (action$) {</code>
+        <code>  const emitPending = () => Observable.of({ type: '@@fetchItems/pending' })</code>
+        <code>  const emitStepTwo = () => Observable.of({ type: '@@fetchItems/stepTwo' })</code>
+        <code>  const fetchItems = () => Observable.ajax({ method: 'GET', url: '/items' })</code>
+        <code>  const fetchItemsMeta = items => Observable.ajax({ method: 'GET', url: '/items/meta', payload: items })</code>
+        <code> </code>
+        <code>  return action$</code>
+        <code>    .ofType('@@fetchItems')</code>
+        <code>    .switchMap(() =></code>
+        <code>      <mark>Observable.merge(</mark></code>
+        <code>        <mark>emitPending(),</mark></code>
+        <code>        <mark>fetchItems()</mark></code>
+        <code>          .switchMap(items => Observable.merge(</code>
+        <code>            emitStepTwo(),</code>
+        <code>            fetchItemsMeta(items)</code>
+        <code>              .delay(1000)</code>
+        <code>              .switchMap(payload => fetchItemsSuccess(payload.response))</code>
+        <code>          ))</code>
+        <code>      <mark>)</mark></code>
+        <code>      .catch(payload => fetchItemsError(payload.response))</code>
+        <code>      .takeUntil(action$.ofType('@@fetchItems/cancel'))</code>
+        <code>    )</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Rx complex async flow
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        effects.js :
+      </label>
+      <pre>
+        <code>function fetchItemsEffect (action$) {</code>
+        <code>  const emitPending = () => Observable.of({ type: '@@fetchItems/pending' })</code>
+        <code>  const emitStepTwo = () => Observable.of({ type: '@@fetchItems/stepTwo' })</code>
+        <code>  const fetchItems = () => Observable.ajax({ method: 'GET', url: '/items' })</code>
+        <code>  const fetchItemsMeta = items => Observable.ajax({ method: 'GET', url: '/items/meta', payload: items })</code>
+        <code> </code>
+        <code>  return action$</code>
+        <code>    .ofType('@@fetchItems')</code>
+        <code>    .switchMap(() =></code>
+        <code>      Observable.merge(</code>
+        <code>        emitPending(),</code>
+        <code>        fetchItems()</code>
+        <code>          .switchMap(items => Observable.merge(</code>
+        <code>            emitStepTwo(),</code>
+        <code>            fetchItemsMeta(items)</code>
+        <code>              .delay(1000)</code>
+        <code>              .switchMap(payload => fetchItemsSuccess(payload.response))</code>
+        <code>          ))</code>
+        <code>      )</code>
+        <code>      <mark>.catch(payload => fetchItemsError(payload.response))</mark></code>
+        <code>      .takeUntil(action$.ofType('@@fetchItems/cancel'))</code>
+        <code>    )</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Rx complex async flow
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        effects.js :
+      </label>
+      <pre>
+        <code>function fetchItemsEffect (action$) {</code>
+        <code>  const emitPending = () => Observable.of({ type: '@@fetchItems/pending' })</code>
+        <code>  const emitStepTwo = () => Observable.of({ type: '@@fetchItems/stepTwo' })</code>
+        <code>  const fetchItems = () => Observable.ajax({ method: 'GET', url: '/items' })</code>
+        <code>  const fetchItemsMeta = items => Observable.ajax({ method: 'GET', url: '/items/meta', payload: items })</code>
+        <code> </code>
+        <code>  return action$</code>
+        <code>    .ofType('@@fetchItems')</code>
+        <code>    .switchMap(() =></code>
+        <code>      Observable.merge(</code>
+        <code>        emitPending(),</code>
+        <code>        fetchItems()</code>
+        <code>          .switchMap(items => Observable.merge(</code>
+        <code>            emitStepTwo(),</code>
+        <code>            fetchItemsMeta(items)</code>
+        <code>              .delay(1000)</code>
+        <code>              .switchMap(payload => fetchItemsSuccess(payload.response))</code>
+        <code>          ))</code>
+        <code>      )</code>
+        <code>      .catch(payload => fetchItemsError(payload.response))</code>
+        <code>      <mark>.takeUntil(action$.ofType('@@fetchItems/cancel'))</mark></code>
+        <code>    )</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Rx complex async flow
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        effects.js :
+      </label>
+      <pre>
+        <code>function fetchItemsEffect (action$) {</code>
+        <code>  const emitPending = () => Observable.of({ type: '@@fetchItems/pending' })</code>
+        <code>  const emitStepTwo = () => Observable.of({ type: '@@fetchItems/stepTwo' })</code>
+        <code>  const fetchItems = () => Observable.ajax({ method: 'GET', url: '/items' })</code>
+        <code>  const fetchItemsMeta = items => Observable.ajax({ method: 'GET', url: '/items/meta', payload: items })</code>
+        <code> </code>
+        <code>  return action$</code>
+        <code>    .ofType('@@fetchItems')</code>
+        <code>    .switchMap(() =></code>
+        <code>      Observable.merge(</code>
+        <code>        emitPending(),</code>
+        <code>        fetchItems()</code>
+        <code>          .switchMap(items => <mark>Observable.merge(</mark></code>
+        <code>            <mark>emitStepTwo(),</mark></code>
+        <code>            <mark>fetchItemsMeta(items)</mark></code>
+        <code>              .delay(1000)</code>
+        <code>              .switchMap(payload => fetchItemsSuccess(payload.response))</code>
+        <code>          <mark>)</mark>)</code>
+        <code>      )</code>
+        <code>      .catch(payload => fetchItemsError(payload.response))</code>
+        <code>      .takeUntil(action$.ofType('@@fetchItems/cancel'))</code>
+        <code>    )</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Rx complex async flow
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        effects.js :
+      </label>
+      <pre>
+        <code>function fetchItemsEffect (action$) {</code>
+        <code>  const emitPending = () => Observable.of({ type: '@@fetchItems/pending' })</code>
+        <code>  const emitStepTwo = () => Observable.of({ type: '@@fetchItems/stepTwo' })</code>
+        <code>  const fetchItems = () => Observable.ajax({ method: 'GET', url: '/items' })</code>
+        <code>  const fetchItemsMeta = items => Observable.ajax({ method: 'GET', url: '/items/meta', payload: items })</code>
+        <code> </code>
+        <code>  return action$</code>
+        <code>    .ofType('@@fetchItems')</code>
+        <code>    .switchMap(() =></code>
+        <code>      Observable.merge(</code>
+        <code>        emitPending(),</code>
+        <code>        fetchItems()</code>
+        <code>          .switchMap(items => Observable.merge(</code>
+        <code>            emitStepTwo(),</code>
+        <code>            fetchItemsMeta(items)</code>
+        <code>              <mark>.delay(1000)</mark></code>
+        <code>              .switchMap(payload => fetchItemsSuccess(payload.response))</code>
+        <code>          ))</code>
+        <code>      )</code>
+        <code>      .catch(payload => fetchItemsError(payload.response))</code>
+        <code>      .takeUntil(action$.ofType('@@fetchItems/cancel'))</code>
+        <code>    )</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    Example: Rx complex async flow
+  </h2>
+  <div class="c-code c-code-center">
+    <div class="c-code-fullwidth">
+      <label>
+        effects.js :
+      </label>
+      <pre>
+        <code>function fetchItemsEffect (action$) {</code>
+        <code>  const emitPending = () => Observable.of({ type: '@@fetchItems/pending' })</code>
+        <code>  const emitStepTwo = () => Observable.of({ type: '@@fetchItems/stepTwo' })</code>
+        <code>  const fetchItems = () => Observable.ajax({ method: 'GET', url: '/items' })</code>
+        <code>  const fetchItemsMeta = items => Observable.ajax({ method: 'GET', url: '/items/meta', payload: items })</code>
+        <code> </code>
+        <code>  return action$</code>
+        <code>    .ofType('@@fetchItems')</code>
+        <code>    .switchMap(() =></code>
+        <code>      Observable.merge(</code>
+        <code>        emitPending(),</code>
+        <code>        fetchItems()</code>
+        <code>          .switchMap(items => Observable.merge(</code>
+        <code>            emitStepTwo(),</code>
+        <code>            fetchItemsMeta(items)</code>
+        <code>              .delay(1000)</code>
+        <code>              <mark>.switchMap(payload => fetchItemsSuccess(payload.response))</mark></code>
+        <code>          ))</code>
+        <code>      )</code>
+        <code>      .catch(payload => fetchItemsError(payload.response))</code>
+        <code>      .takeUntil(action$.ofType('@@fetchItems/cancel'))</code>
+        <code>    )</code>
+        <code>}</code>
+      </pre>
+    </div>
+  </div>
 </section>
 
 <section class="slide c-slide">
