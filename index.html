@@ -21,9 +21,10 @@
 
 <style>
   .slide.c-slide {
-    padding: 60px 55px 0 55px;
+    padding: 40px 55px 0 55px;
   }
   .slide.c-slide h2 {
+    margin: 0 0 30px 0;
     color: #000000;
   }
   .slide.c-slide p {
@@ -78,12 +79,14 @@
   }
   .slide.c-slide .c-code label {
     display: block;
-    margin: 0 0 2px 0;
+    margin: 0 0 5px 0;
     font-size: 12px;
     font-weight: 700;
+    font-style: italic;
+    color: #666666;
   }
   .slide.c-slide .c-code pre {
-    margin: 0 0 8px 0;
+    margin: 0 0 12px 0;
   }
   .slide.c-slide .c-code code {
     font-size: 15px;
@@ -152,28 +155,17 @@
     Agenda
   </h2>
   <ul>
-    <li class="next">
+    <li>
       we’re looking at <span class="c-highlight">single</span> example rewritten with <span class="c-highlight">different technologies</span>
     </li>
-    <li class="next">
+    <li>
       we’re moving <span class="c-highlight">from past to present</span>
     </li>
-    <li class="next">
+    <li>
       we’re thinking in <span class="c-highlight">conceptual</span>, <span class="c-highlight">abstract</span> and <span class="c-highlight">technology-agnostic</span> way
     </li>
   </ul>
 </section>
-
-<!--
-<section class="slide c-slide">
-  <h2>
-    Example
-  </h2>
-  <p>
-    TODO : diagram
-  </p>
-</section>
--->
 
 <section class="slide c-slide c-slide-cover-w-image">
   <h2>
@@ -1223,7 +1215,27 @@
       available for <span class="c-highlight">JavaScript</span>, Java, Scala, C#, C++, Clojure, Python and many others
     </li>
     <li>
-      is an important dependency of <span class="c-highlight">Angular 2 toolset</span>
+      is an important dependency of <span class="c-highlight">Angular 2+ toolset</span>
+    </li>
+  </ul>
+</section>
+
+<section class="slide c-slide">
+  <h2>
+    In modern React or Angular2+ application
+  </h2>
+  <ul>
+    <li>
+      actions (or changes, or events) are stream
+    </li>
+    <li>
+      data is stream
+    </li>
+    <li>
+      purity achieved as side-effects isolated
+    </li>
+    <li>
+      complex async flow is easier to implement as Rx introduced
     </li>
   </ul>
 </section>
@@ -2150,7 +2162,7 @@
 
 <section class="slide c-slide">
   <h2>
-    Theses
+    The difference?
   </h2>
   <ul>
     <li>
@@ -2163,7 +2175,7 @@
       <span class="c-highlight">side-effect model</span> (and code!) for both platforms <span class="c-highlight">is the same</span>
     </li>
     <li>
-      main <span class="c-highlight">difference is in rendering and data binding</span> (react jsx & virtual dom vs angular templates & shadow dom, react props vs angular input/output decorators, etc)
+      main <span class="c-highlight">difference is in rendering and data binding</span> (React JSX & VirtualDOM vs Angular2+ templates & ShadowDOM, React props vs Angular2+ Input/Output decorators, etc)
     </li>
     <li>
       there are mostly <span class="c-highlight">syntactic</span> (and implementation) <span class="c-highlight">differences</span> between
@@ -2174,20 +2186,17 @@
 
 <section class="slide c-slide">
   <h2>
-    Theses
+    Rx benefits
   </h2>
   <ul>
     <li>
-      actions (or changes, or events) are stream
+      Rx allows for intermediate results of a complex async flow
     </li>
     <li>
-      data is stream
+      Rx allows for cancellation of an async flow
     </li>
     <li>
-      purity achieved as side-effects isolated
-    </li>
-    <li>
-      complex async flow is easier to implement as Rx introduced
+      Rx allows for very complex stream manipulations
     </li>
   </ul>
 </section>
@@ -2658,23 +2667,6 @@
       </pre>
     </div>
   </div>
-</section>
-
-<section class="slide c-slide">
-  <h2>
-    Theses
-  </h2>
-  <ul>
-    <li>
-      Rx allows for intermediate results of a complex async flow
-    </li>
-    <li>
-      Rx allows for cancellation of an async flow
-    </li>
-    <li>
-      Rx allows for very complex stream manipulations
-    </li>
-  </ul>
 </section>
 
 <section class="slide c-slide c-slide-cover">
