@@ -2703,23 +2703,25 @@
       </label>
       <pre>
         <code class="javascript">function component (sources) {</code>
-        <code class="javascript">  const buttonClick$ = sources.DOM.select('button').events('click')</code>
-        <code class="javascript">  const fetchItemsResult$ = buttonClick$</code>
-        <code class="javascript">    .switchMap(() => Observable.ajax({ method: 'GET', url: '/items' }))</code>
-        <code class="javascript">    .catch(payload => Observable.of(payload.response))</code>
-        <code class="javascript">    .map(payload => payload.response)</code>
-        <code class="javascript"> </code>
-        <code class="javascript">  const vdom$ = fetchItemsResult$.map(result => (</code>
-        <code class="javascript">    &lt;div&gt;</code>
-        <code class="javascript">      &lt;button&gt;</code>
-        <code class="javascript">        Fetch Items</code>
-        <code class="javascript">      &lt;/button&gt;</code>
-        <code class="javascript">      { Array.isArray(result)</code>
-        <code class="javascript">        ? &lt;ItemsList items={result} /&gt; }</code>
-        <code class="javascript">        : &lt;Error error={result} /&gt;</code>
-        <code class="javascript">    &lt;/div&gt;</code>
+        <code class="javascript">  const buttonClick$ = sources.DOM.pipe(</code>
+        <code class="javascript">    select('button'),</code>
+        <code class="javascript">    events('click')</code>
         <code class="javascript">  )</code>
-        <code class="javascript"> </code>
+        <code class="javascript">  const fetchItemsResult$ = buttonClick$.pipe(</code>
+        <code class="javascript">    switchMap(() => ajax({ method: 'GET', url: '/items' })),</code>
+        <code class="javascript">    catchError(payload => of(payload.response)),</code>
+        <code class="javascript">    map(payload => payload.response)</code>
+        <code class="javascript">  )</code>
+        <code class="javascript">  const vdom$ = fetchItemsResult$.pipe(</code>
+        <code class="javascript">    map(result => (</code>
+        <code class="html">      &lt;div&gt;</code>
+        <code class="html">        &lt;button&gt;Fetch Items&lt;/button&gt;</code>
+        <code class="javascript">        { Array.isArray(result)</code>
+        <code class="html">          ? &lt;ItemsList items={result} /&gt; }</code>
+        <code class="html">          : &lt;Error error={result} /&gt;</code>
+        <code class="html">      &lt;/div&gt;</code>
+        <code class="javascript">    )</code>
+        <code class="javascript">  )</code>
         <code class="javascript">  return { DOM: vdom$ }</code>
         <code class="javascript">}</code>
       </pre>
@@ -2737,24 +2739,26 @@
         component.js :
       </label>
       <pre>
-        <code class="javascript">function component (<mark>sources</mark>) {</code>
-        <code class="javascript">  const buttonClick$ = <mark>sources.DOM</mark>.select('button').events('click')</code>
-        <code class="javascript">  const fetchItemsResult$ = buttonClick$</code>
-        <code class="javascript">    .switchMap(() => Observable.ajax({ method: 'GET', url: '/items' }))</code>
-        <code class="javascript">    .catch(payload => Observable.of(payload.response))</code>
-        <code class="javascript">    .map(payload => payload.response)</code>
-        <code class="javascript"> </code>
-        <code class="javascript">  const vdom$ = fetchItemsResult$.map(result => (</code>
-        <code class="javascript">    &lt;div&gt;</code>
-        <code class="javascript">      &lt;button&gt;</code>
-        <code class="javascript">        Fetch Items</code>
-        <code class="javascript">      &lt;/button&gt;</code>
-        <code class="javascript">      { Array.isArray(result)</code>
-        <code class="javascript">        ? &lt;ItemsList items={result} /&gt; }</code>
-        <code class="javascript">        : &lt;Error error={result} /&gt;</code>
-        <code class="javascript">    &lt;/div&gt;</code>
+        <code class="javascript">function <mark>component (sources)</mark> {</code>
+        <code class="javascript">  const buttonClick$ = <mark>sources.DOM</mark>.pipe(</code>
+        <code class="javascript">    select('button'),</code>
+        <code class="javascript">    events('click')</code>
         <code class="javascript">  )</code>
-        <code class="javascript"> </code>
+        <code class="javascript">  const fetchItemsResult$ = buttonClick$.pipe(</code>
+        <code class="javascript">    switchMap(() => ajax({ method: 'GET', url: '/items' })),</code>
+        <code class="javascript">    catchError(payload => of(payload.response)),</code>
+        <code class="javascript">    map(payload => payload.response)</code>
+        <code class="javascript">  )</code>
+        <code class="javascript">  const vdom$ = fetchItemsResult$.pipe(</code>
+        <code class="javascript">    map(result => (</code>
+        <code class="html">      &lt;div&gt;</code>
+        <code class="html">        &lt;button&gt;Fetch Items&lt;/button&gt;</code>
+        <code class="javascript">        { Array.isArray(result)</code>
+        <code class="html">          ? &lt;ItemsList items={result} /&gt; }</code>
+        <code class="html">          : &lt;Error error={result} /&gt;</code>
+        <code class="html">      &lt;/div&gt;</code>
+        <code class="javascript">    )</code>
+        <code class="javascript">  )</code>
         <code class="javascript">  <mark>return { DOM: vdom$ }</mark></code>
         <code class="javascript">}</code>
       </pre>
@@ -2773,23 +2777,25 @@
       </label>
       <pre>
         <code class="javascript">function component (sources) {</code>
-        <code class="javascript">  <mark>const buttonClick$ = sources.DOM.select('button').events('click')</mark></code>
-        <code class="javascript">  const fetchItemsResult$ = buttonClick$</code>
-        <code class="javascript">    .switchMap(() => Observable.ajax({ method: 'GET', url: '/items' }))</code>
-        <code class="javascript">    .catch(payload => Observable.of(payload.response))</code>
-        <code class="javascript">    .map(payload => payload.response)</code>
-        <code class="javascript"> </code>
-        <code class="javascript">  const vdom$ = fetchItemsResult$.map(result => (</code>
-        <code class="javascript">    &lt;div&gt;</code>
-        <code class="javascript">      <mark>&lt;button&gt;</mark></code>
-        <code class="javascript">        <mark>Fetch Items</mark></code>
-        <code class="javascript">      <mark>&lt;/button&gt;</mark></code>
-        <code class="javascript">      { Array.isArray(result)</code>
-        <code class="javascript">        ? &lt;ItemsList items={result} /&gt; }</code>
-        <code class="javascript">        : &lt;Error error={result} /&gt;</code>
-        <code class="javascript">    &lt;/div&gt;</code>
+        <code class="javascript">  <mark>const buttonClick$ = sources.DOM.pipe(</mark></code>
+        <code class="javascript">    <mark>select('button'),</mark></code>
+        <code class="javascript">    <mark>events('click')</mark></code>
+        <code class="javascript">  <mark>)</mark></code>
+        <code class="javascript">  const fetchItemsResult$ = buttonClick$.pipe(</code>
+        <code class="javascript">    switchMap(() => ajax({ method: 'GET', url: '/items' })),</code>
+        <code class="javascript">    catchError(payload => of(payload.response)),</code>
+        <code class="javascript">    map(payload => payload.response)</code>
         <code class="javascript">  )</code>
-        <code class="javascript"> </code>
+        <code class="javascript">  const vdom$ = fetchItemsResult$.pipe(</code>
+        <code class="javascript">    map(result => (</code>
+        <code class="html">      &lt;div&gt;</code>
+        <code class="html">        <mark>&lt;button&gt;Fetch Items&lt;/button&gt;</mark></code>
+        <code class="javascript">        { Array.isArray(result)</code>
+        <code class="html">          ? &lt;ItemsList items={result} /&gt; }</code>
+        <code class="html">          : &lt;Error error={result} /&gt;</code>
+        <code class="html">      &lt;/div&gt;</code>
+        <code class="javascript">    )</code>
+        <code class="javascript">  )</code>
         <code class="javascript">  return { DOM: vdom$ }</code>
         <code class="javascript">}</code>
       </pre>
@@ -2808,23 +2814,25 @@
       </label>
       <pre>
         <code class="javascript">function component (sources) {</code>
-        <code class="javascript">  const buttonClick$ = sources.DOM.select('button').events('click')</code>
-        <code class="javascript">  <mark>const fetchItemsResult$ = buttonClick$</mark></code>
-        <code class="javascript">    <mark>.switchMap(() => Observable.ajax({ method: 'GET', url: '/items' }))</mark></code>
-        <code class="javascript">    .catch(payload => Observable.of(payload.response))</code>
-        <code class="javascript">    .map(payload => payload.response)</code>
-        <code class="javascript"> </code>
-        <code class="javascript">  const vdom$ = fetchItemsResult$.map(result => (</code>
-        <code class="javascript">    &lt;div&gt;</code>
-        <code class="javascript">      &lt;button&gt;</code>
-        <code class="javascript">        Fetch Items</code>
-        <code class="javascript">      &lt;/button&gt;</code>
-        <code class="javascript">      { Array.isArray(result)</code>
-        <code class="javascript">        ? &lt;ItemsList items={result} /&gt; }</code>
-        <code class="javascript">        : &lt;Error error={result} /&gt;</code>
-        <code class="javascript">    &lt;/div&gt;</code>
+        <code class="javascript">  const buttonClick$ = sources.DOM.pipe(</code>
+        <code class="javascript">    select('button'),</code>
+        <code class="javascript">    events('click')</code>
         <code class="javascript">  )</code>
-        <code class="javascript"> </code>
+        <code class="javascript">  <mark>const fetchItemsResult$ = buttonClick$.pipe(</mark></code>
+        <code class="javascript">    <mark>switchMap(() => ajax({ method: 'GET', url: '/items' })),</mark></code>
+        <code class="javascript">    <mark>catchError(payload => of(payload.response)),</mark></code>
+        <code class="javascript">    <mark>map(payload => payload.response)</mark></code>
+        <code class="javascript">  <mark>)</mark></code>
+        <code class="javascript">  const vdom$ = fetchItemsResult$.pipe(</code>
+        <code class="javascript">    map(result => (</code>
+        <code class="html">      &lt;div&gt;</code>
+        <code class="html">        &lt;button&gt;Fetch Items&lt;/button&gt;</code>
+        <code class="javascript">        { Array.isArray(result)</code>
+        <code class="html">          ? &lt;ItemsList items={result} /&gt; }</code>
+        <code class="html">          : &lt;Error error={result} /&gt;</code>
+        <code class="html">      &lt;/div&gt;</code>
+        <code class="javascript">    )</code>
+        <code class="javascript">  )</code>
         <code class="javascript">  return { DOM: vdom$ }</code>
         <code class="javascript">}</code>
       </pre>
@@ -2843,93 +2851,25 @@
       </label>
       <pre>
         <code class="javascript">function component (sources) {</code>
-        <code class="javascript">  const buttonClick$ = sources.DOM.select('button').events('click')</code>
-        <code class="javascript">  const fetchItemsResult$ = buttonClick$</code>
-        <code class="javascript">    .switchMap(() => Observable.ajax({ method: 'GET', url: '/items' }))</code>
-        <code class="javascript">    <mark>.catch(payload => Observable.of(payload.response))</mark></code>
-        <code class="javascript">    .map(payload => payload.response)</code>
-        <code class="javascript"> </code>
-        <code class="javascript">  const vdom$ = fetchItemsResult$.map(result => (</code>
-        <code class="javascript">    &lt;div&gt;</code>
-        <code class="javascript">      &lt;button&gt;</code>
-        <code class="javascript">        Fetch Items</code>
-        <code class="javascript">      &lt;/button&gt;</code>
-        <code class="javascript">      { Array.isArray(result)</code>
-        <code class="javascript">        ? &lt;ItemsList items={result} /&gt; }</code>
-        <code class="javascript">        : &lt;Error error={result} /&gt;</code>
-        <code class="javascript">    &lt;/div&gt;</code>
+        <code class="javascript">  const buttonClick$ = sources.DOM.pipe(</code>
+        <code class="javascript">    select('button'),</code>
+        <code class="javascript">    events('click')</code>
         <code class="javascript">  )</code>
-        <code class="javascript"> </code>
-        <code class="javascript">  return { DOM: vdom$ }</code>
-        <code class="javascript">}</code>
-      </pre>
-    </div>
-  </div>
-</section>
-
-<section class="slide c-slide">
-  <h2>
-    Example: Cycle, Rx
-  </h2>
-  <div class="c-code c-code-center">
-    <div class="c-code-fullwidth">
-      <label>
-        component.js :
-      </label>
-      <pre>
-        <code class="javascript">function component (sources) {</code>
-        <code class="javascript">  const buttonClick$ = sources.DOM.select('button').events('click')</code>
-        <code class="javascript">  const fetchItemsResult$ = buttonClick$</code>
-        <code class="javascript">    .switchMap(() => Observable.ajax({ method: 'GET', url: '/items' }))</code>
-        <code class="javascript">    .catch(payload => Observable.of(payload.response))</code>
-        <code class="javascript">    <mark>.map(payload => payload.response)</mark></code>
-        <code class="javascript"> </code>
-        <code class="javascript">  const vdom$ = fetchItemsResult$.map(result => (</code>
-        <code class="javascript">    &lt;div&gt;</code>
-        <code class="javascript">      &lt;button&gt;</code>
-        <code class="javascript">        Fetch Items</code>
-        <code class="javascript">      &lt;/button&gt;</code>
-        <code class="javascript">      { Array.isArray(result)</code>
-        <code class="javascript">        ? &lt;ItemsList items={result} /&gt; }</code>
-        <code class="javascript">        : &lt;Error error={result} /&gt;</code>
-        <code class="javascript">    &lt;/div&gt;</code>
+        <code class="javascript">  const fetchItemsResult$ = buttonClick$.pipe(</code>
+        <code class="javascript">    switchMap(() => ajax({ method: 'GET', url: '/items' })),</code>
+        <code class="javascript">    catchError(payload => of(payload.response)),</code>
+        <code class="javascript">    map(payload => payload.response)</code>
         <code class="javascript">  )</code>
-        <code class="javascript"> </code>
-        <code class="javascript">  return { DOM: vdom$ }</code>
-        <code class="javascript">}</code>
-      </pre>
-    </div>
-  </div>
-</section>
-
-<section class="slide c-slide">
-  <h2>
-    Example: Cycle, Rx
-  </h2>
-  <div class="c-code c-code-center">
-    <div class="c-code-fullwidth">
-      <label>
-        component.js :
-      </label>
-      <pre>
-        <code class="javascript">function component (sources) {</code>
-        <code class="javascript">  const buttonClick$ = sources.DOM.select('button').events('click')</code>
-        <code class="javascript">  const fetchItemsResult$ = buttonClick$</code>
-        <code class="javascript">    .switchMap(() => Observable.ajax({ method: 'GET', url: '/items' }))</code>
-        <code class="javascript">    .catch(payload => Observable.of(payload.response))</code>
-        <code class="javascript">    .map(payload => payload.response)</code>
-        <code class="javascript"> </code>
-        <code class="javascript">  const vdom$ = <mark>fetchItemsResult$.map</mark>(result => (</code>
-        <code class="javascript">    &lt;div&gt;</code>
-        <code class="javascript">      &lt;button&gt;</code>
-        <code class="javascript">        Fetch Items</code>
-        <code class="javascript">      &lt;/button&gt;</code>
-        <code class="javascript">      { Array.isArray(result)</code>
-        <code class="javascript">        ? &lt;ItemsList items={result} /&gt; }</code>
-        <code class="javascript">        : &lt;Error error={result} /&gt;</code>
-        <code class="javascript">    &lt;/div&gt;</code>
-        <code class="javascript">  )</code>
-        <code class="javascript"> </code>
+        <code class="javascript">  <mark>const vdom$ = fetchItemsResult$.pipe(</mark></code>
+        <code class="javascript">    <mark>map(result => (</mark></code>
+        <code class="html">      <mark>&lt;div&gt;</mark></code>
+        <code class="html">        <mark>&lt;button&gt;Fetch Items&lt;/button&gt;</mark></code>
+        <code class="javascript">        <mark>{ Array.isArray(result)</mark></code>
+        <code class="html">          <mark>? &lt;ItemsList items={result} /&gt; }</mark></code>
+        <code class="html">          <mark>: &lt;Error error={result} /&gt;</mark></code>
+        <code class="html">      <mark>&lt;/div&gt;</mark></code>
+        <code class="javascript">    <mark>)</mark></code>
+        <code class="javascript">  <mark>)</mark></code>
         <code class="javascript">  return { DOM: vdom$ }</code>
         <code class="javascript">}</code>
       </pre>
@@ -2942,19 +2882,19 @@
     Theses
   </h2>
   <ul>
-    <li class="next">
+    <li>
       actions (or changes, or events) are stream
     </li>
-    <li class="next">
+    <li>
       data is stream
     </li>
-    <li class="next">
+    <li>
       DOM updates are stream
     </li>
-    <li class="next">
+    <li>
       DOM events are stream
     </li>
-    <li class="next">
+    <li>
       all front-end <span class="c-highlight">application logic is a stream manipulation logic</span>
     </li>
   </ul>
@@ -2979,12 +2919,15 @@
         <code class="javascript">const context$ = new Rx.Subject()</code>
         <code class="javascript"> </code>
         <code class="javascript">function handleFetchItemsRequest (context) {</code>
+        <code class="javascript">  const items = getItemsFromDb()</code>
         <code class="javascript">  context.response.writeHead(200, { 'Content-Type': 'application/json' })</code>
         <code class="javascript">  context.response.end(JSON.stringify(items))</code>
         <code class="javascript">}</code>
         <code class="javascript"> </code>
         <code class="javascript">context$</code>
-        <code class="javascript">  .do(context => { console.log('request from ip:', context.request.connection.remoteAddress) })</code>
+        <code class="javascript">  .pipe(</code>
+        <code class="javascript">    tap(context => { console.log('request from ip', context.request.connection.remoteAddress) })</code>
+        <code class="javascript">  )</code>
         <code class="javascript">  .subscribe(handleFetchItemsRequest)</code>
         <code class="javascript"> </code>
         <code class="javascript">const server = http.createServer((request, response) => {</code>
@@ -3010,12 +2953,15 @@
         <code class="javascript"><mark>const context$ = new Rx.Subject()</mark></code>
         <code class="javascript"> </code>
         <code class="javascript">function handleFetchItemsRequest (context) {</code>
+        <code class="javascript">  const items = getItemsFromDb()</code>
         <code class="javascript">  context.response.writeHead(200, { 'Content-Type': 'application/json' })</code>
         <code class="javascript">  context.response.end(JSON.stringify(items))</code>
         <code class="javascript">}</code>
         <code class="javascript"> </code>
         <code class="javascript">context$</code>
-        <code class="javascript">  .do(context => { console.log('request from ip:', context.request.connection.remoteAddress) })</code>
+        <code class="javascript">  .pipe(</code>
+        <code class="javascript">    tap(context => { console.log('request from ip', context.request.connection.remoteAddress) })</code>
+        <code class="javascript">  )</code>
         <code class="javascript">  .subscribe(handleFetchItemsRequest)</code>
         <code class="javascript"> </code>
         <code class="javascript">const server = http.createServer((request, response) => {</code>
@@ -3040,13 +2986,16 @@
       <pre>
         <code class="javascript">const context$ = new Rx.Subject()</code>
         <code class="javascript"> </code>
-        <code class="javascript">function <mark>handleFetchItemsRequest</mark> (context) {</code>
+        <code class="javascript">function <mark>handleFetchItemsRequest (context)</mark> {</code>
+        <code class="javascript">  const items = getItemsFromDb()</code>
         <code class="javascript">  <mark>context.response.writeHead(200, { 'Content-Type': 'application/json' })</mark></code>
         <code class="javascript">  <mark>context.response.end(JSON.stringify(items))</mark></code>
         <code class="javascript">}</code>
         <code class="javascript"> </code>
         <code class="javascript">context$</code>
-        <code class="javascript">  .do(context => { console.log('request from ip:', context.request.connection.remoteAddress) })</code>
+        <code class="javascript">  .pipe(</code>
+        <code class="javascript">    tap(context => { console.log('request from ip', context.request.connection.remoteAddress) })</code>
+        <code class="javascript">  )</code>
         <code class="javascript">  .subscribe(handleFetchItemsRequest)</code>
         <code class="javascript"> </code>
         <code class="javascript">const server = http.createServer((request, response) => {</code>
@@ -3072,12 +3021,15 @@
         <code class="javascript">const context$ = new Rx.Subject()</code>
         <code class="javascript"> </code>
         <code class="javascript">function handleFetchItemsRequest (context) {</code>
+        <code class="javascript">  const items = getItemsFromDb()</code>
         <code class="javascript">  context.response.writeHead(200, { 'Content-Type': 'application/json' })</code>
-        <code class="javascript">  context.response.end(JSON.stringify(items));</code>
+        <code class="javascript">  context.response.end(JSON.stringify(items))</code>
         <code class="javascript">}</code>
         <code class="javascript"> </code>
         <code class="javascript">context$</code>
-        <code class="javascript">  <mark>.do(context => { console.log('request from ip:', context.request.connection.remoteAddress) })</mark></code>
+        <code class="javascript">  .pipe(</code>
+        <code class="javascript">    <mark>tap(context => { console.log('request from ip', context.request.connection.remoteAddress) })</mark></code>
+        <code class="javascript">  )</code>
         <code class="javascript">  .subscribe(handleFetchItemsRequest)</code>
         <code class="javascript"> </code>
         <code class="javascript">const server = http.createServer((request, response) => {</code>
@@ -3103,12 +3055,15 @@
         <code class="javascript">const context$ = new Rx.Subject()</code>
         <code class="javascript"> </code>
         <code class="javascript">function handleFetchItemsRequest (context) {</code>
+        <code class="javascript">  const items = getItemsFromDb()</code>
         <code class="javascript">  context.response.writeHead(200, { 'Content-Type': 'application/json' })</code>
-        <code class="javascript">  context.response.end(JSON.stringify(items));</code>
+        <code class="javascript">  context.response.end(JSON.stringify(items))</code>
         <code class="javascript">}</code>
         <code class="javascript"> </code>
         <code class="javascript">context$</code>
-        <code class="javascript">  .do(context => { console.log('request from ip:', context.request.connection.remoteAddress) })</code>
+        <code class="javascript">  .pipe(</code>
+        <code class="javascript">    tap(context => { console.log('request from ip', context.request.connection.remoteAddress) })</code>
+        <code class="javascript">  )</code>
         <code class="javascript">  <mark>.subscribe(handleFetchItemsRequest)</mark></code>
         <code class="javascript"> </code>
         <code class="javascript">const server = http.createServer((request, response) => {</code>
@@ -3134,15 +3089,18 @@
         <code class="javascript">const context$ = new Rx.Subject()</code>
         <code class="javascript"> </code>
         <code class="javascript">function handleFetchItemsRequest (context) {</code>
+        <code class="javascript">  const items = getItemsFromDb()</code>
         <code class="javascript">  context.response.writeHead(200, { 'Content-Type': 'application/json' })</code>
-        <code class="javascript">  context.response.end(JSON.stringify(items));</code>
+        <code class="javascript">  context.response.end(JSON.stringify(items))</code>
         <code class="javascript">}</code>
         <code class="javascript"> </code>
         <code class="javascript">context$</code>
-        <code class="javascript">  .do(context => { console.log('request from ip:', context.request.connection.remoteAddress) })</code>
+        <code class="javascript">  .pipe(</code>
+        <code class="javascript">    tap(context => { console.log('request from ip', context.request.connection.remoteAddress) })</code>
+        <code class="javascript">  )</code>
         <code class="javascript">  .subscribe(handleFetchItemsRequest)</code>
         <code class="javascript"> </code>
-        <code class="javascript">const server = <mark>http.createServer((request, response) => {</mark></code>
+        <code class="javascript">const server = <mark>http.createServer((request, response)</mark> => {</code>
         <code class="javascript">  <mark>context$.next({ request, response })</mark></code>
         <code class="javascript">})</code>
         <code class="javascript"> </code>
@@ -3157,10 +3115,10 @@
     Theses
   </h2>
   <ul>
-    <li class="next">
+    <li>
       stream manipulation is an abstract concept that can be applied to any domain
     </li>
-    <li class="next">
+    <li>
       streams solve problems well when time is a component of a problem
     </li>
   </ul>
