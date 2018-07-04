@@ -33,8 +33,11 @@
   .slide.c-slide::after {
     display: none;
   }
+  .slide ul li:before {
+    color: #717375;
+  }
   .slide.c-slide .c-highlight {
-    color: #ff0000;
+    color: #b21a1a;
   }
   .slide.c-slide.c-slide-cover h2 {
     margin: 180px 0 0 0;
@@ -48,7 +51,7 @@
     font-size: 20px;
   }
   .slide.c-slide.c-slide-cover-w-image h2 {
-    margin: 20px 0 0 0;
+    margin: 80px 0 0 0;
     text-align: center;
     font-size: 70px;
   }
@@ -60,6 +63,18 @@
   }
   .slide.c-slide.c-slide-cover.c-slide-custom-teletubbies h2 {
     color: #ffffff;
+  }
+  .slide.c-slide.c-slide-custom-btf h2 {
+    color: #ffffff;
+  }
+  .slide.c-slide.c-slide-custom-btf ul li {
+    color: #ffffff;
+  }
+  .slide.c-slide.c-slide-custom-btf .c-highlight {
+    color: #ff5959;
+  }
+  .slide.c-slide.c-slide-custom-btf ul li:before {
+    color: #b3b8bf;
   }
   .slide.c-slide .c-code {
     display: flex;
@@ -99,9 +114,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 30px 0 0 0;
   }
   .slide.c-slide .c-image-container img {
     max-height: 480px;
+  }
+  .slide.c-slide .c-image-right-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    z-index: -1;
+  }
+  .slide.c-slide .c-image-right-container img {
+    height: 100%;
   }
 </style>
 
@@ -114,12 +140,9 @@
   <p>
     by Valentyn Barmashyn
   </p>
-  <!--<figure>
-    <img class="cover" src="pictures/cover.jpg" alt="Hands on the orange typewriter in a park">
-    <figcaption class="white">
-      <a href="http://fiftyfootshadows.net/">© John Carey</a>
-    </figcaption>
-  </figure>-->
+  <div class="c-image-container">
+    <img src="pictures/eteam-logo.png" alt="Slavery" width="200">
+  </div>
 </section>
 
 <section class="slide c-slide c-slide-cover c-slide-custom-teletubbies">
@@ -145,40 +168,44 @@
       JavaScript, Go, Python, Java, PHP
     </li>
     <li>
-      React (w/ and  w/o Redux), Angular 2+, Angular 1, Backbone
+      React (w/ and  w/o Redux), <br /> Angular 2+, Angular 1, Backbone
     </li>
   </ul>
-  <!--
-  <div class="c-image-container">
-    <img src="pictures/slavery.jpg" alt="Slavery" width="500">
+  <div class="c-image-right-container">
+    <img src="pictures/slavery.jpg" alt="Slavery">
   </div>
-  -->
 </section>
 
-<section class="slide c-slide">
+<section class="slide c-slide c-slide-custom-btf">
   <h2>
     Agenda
   </h2>
   <ul>
     <li>
-      we’re looking at <span class="c-highlight">single</span> example rewritten with <span class="c-highlight">different technologies</span>
+      we’re moving <span class="c-highlight">from past to present</span>
     </li>
     <li>
-      we’re moving <span class="c-highlight">from past to present</span>
+      we’re looking at <span class="c-highlight">single</span> example rewritten with <span class="c-highlight">different technologies</span>
     </li>
     <li>
       we’re thinking in <span class="c-highlight">conceptual</span>, <span class="c-highlight">abstract</span> and <span class="c-highlight">technology-agnostic</span> way
     </li>
   </ul>
+  <figure>
+    <img class="cover" src="pictures/back-to-the-future.png" alt="Teletubbies">
+  </figure>
 </section>
 
-<section class="slide c-slide c-slide-cover">
+<section class="slide c-slide c-slide-cover c-slide-cover-w-image">
   <h2>
     From Chaos to Order
   </h2>
   <p>
     from imperative mess to reactive state
   </p>
+  <div class="c-image-container">
+    <img src="pictures/new-world-order.jpg" alt="Slavery" width="400">
+  </div>
 </section>
 
 <section class="slide c-slide c-slide-cover">
