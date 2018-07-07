@@ -76,6 +76,15 @@
   .slide.c-slide.c-slide-custom-btf ul li:before {
     color: #b3b8bf;
   }
+  .slide.c-slide.c-slide-custom-lotr h2 {
+    color: #ffffff;
+  }
+  .slide.c-slide.c-slide-custom-lotr p {
+    color: #ffffff;
+  }
+  .slide.c-slide.c-slide-custom-kill-bill h2 {
+    color: #FFD401;
+  }
   .slide.c-slide .c-code {
     display: flex;
     margin: 0 -40px 0 -40px;
@@ -196,6 +205,7 @@
   </figure>
 </section>
 
+<!--
 <section class="slide c-slide c-slide-cover c-slide-cover-w-image">
   <h2>
     From Chaos to Order
@@ -207,6 +217,7 @@
     <img src="pictures/new-world-order.jpg" alt="Slavery" width="400">
   </div>
 </section>
+-->
 
 <section class="slide c-slide c-slide-cover">
   <h2>
@@ -346,58 +357,6 @@
         <code class="html">&lt;/script&gt;</code>
         <code class="html"> </code>
         <code class="html">&lt;script class="text/template" id="errorTemplate"&gt;</code>
-        <code class="html">  &lt;span&gt; &lt;%= error %&gt; &lt;/span&gt;</code>
-        <code class="html">&lt;/script&gt;</code>
-      </pre>
-    </div>
-    <div class="c-code-column">
-      <label>
-        index.js :
-      </label>
-      <pre>
-        <code class="javascript">function fetchItems () {</code>
-        <code class="javascript">  const $result = $('#result')</code>
-        <code class="javascript">  $.get('/items')</code>
-        <code class="javascript">    .done(items => {</code>
-        <code class="javascript">      $result.html(itemsTemplate({ items })</code>
-        <code class="javascript">    })</code>
-        <code class="javascript">    .error(error => {</code>
-        <code class="javascript">      $result.html(errorTemplate({ error })</code>
-        <code class="javascript">    })</code>
-        <code class="javascript">}</code>
-        <code class="javascript"> </code>
-        <code class="javascript">const $button = $('#button')</code>
-        <code class="javascript">$button.on('click', () => { fetchItems() })</code>
-      </pre>
-    </div>
-  </div>
-</section>
-
-<section class="slide c-slide">
-  <h2>
-    Example: jQuery, Underscore
-  </h2>
-  <div class="c-code">
-    <div class="c-code-column">
-      <label>
-        index.html :
-      </label>
-      <pre>
-        <code class="html">&lt;button id="button"&gt;Fetch Items&lt;/button&gt;</code>
-        <code class="html"> </code>
-        <code class="html">&lt;div id="result"&gt;&lt;/div&gt;</code>
-        <code class="html"> </code>
-        <code class="html">&lt;script class="text/template" id="itemsTemplate"&gt;</code>
-        <code class="html">  &lt;ul&gt;</code>
-        <code class="javascript">    &lt;% for (var i = 0; i <= items.length; i++) { %&gt;</code>
-        <code class="html">      &lt;li&gt;</code>
-        <code class="html">        &lt;span&gt; &lt;%= items[i] %&gt; &lt;/span&gt;</code>
-        <code class="html">      &lt;/li&gt;</code>
-        <code class="javascript">    &lt;% } %&gt;</code>
-        <code class="html">  &lt;/ul&gt;</code>
-        <code class="html">&lt;/script&gt;</code>
-        <code class="html"> </code>
-        <code class="html">&lt;script class="text/template" id="errorTemplate"&gt;</code>
         <code class="html">  &lt;span&gt; <mark>&lt;%= error %&gt;</mark> &lt;/span&gt;</code>
         <code class="html">&lt;/script&gt;</code>
       </pre>
@@ -410,114 +369,10 @@
         <code class="javascript">function fetchItems () {</code>
         <code class="javascript">  const $result = $('#result')</code>
         <code class="javascript">  $.get('/items')</code>
-        <code class="javascript">    .done(items => {</code>
-        <code class="javascript">      $result.html(itemsTemplate({ items })</code>
-        <code class="javascript">    })</code>
-        <code class="javascript">    .error(error => {</code>
-        <code class="javascript">      $result.html(errorTemplate({ error })</code>
-        <code class="javascript">    })</code>
-        <code class="javascript">}</code>
-        <code class="javascript"> </code>
-        <code class="javascript">const $button = $('#button')</code>
-        <code class="javascript">$button.on('click', () => { fetchItems() })</code>
-      </pre>
-    </div>
-  </div>
-</section>
-
-<section class="slide c-slide">
-  <h2>
-    Example: jQuery, Underscore
-  </h2>
-  <div class="c-code">
-    <div class="c-code-column">
-      <label>
-        index.html :
-      </label>
-      <pre>
-        <code class="html">&lt;button id="button"&gt;Fetch Items&lt;/button&gt;</code>
-        <code class="html"> </code>
-        <code class="html">&lt;div id="result"&gt;&lt;/div&gt;</code>
-        <code class="html"> </code>
-        <code class="html">&lt;script class="text/template" id="itemsTemplate"&gt;</code>
-        <code class="html">  &lt;ul&gt;</code>
-        <code class="javascript">    &lt;% for (var i = 0; i <= items.length; i++) { %&gt;</code>
-        <code class="html">      &lt;li&gt;</code>
-        <code class="html">        &lt;span&gt; &lt;%= items[i] %&gt; &lt;/span&gt;</code>
-        <code class="html">      &lt;/li&gt;</code>
-        <code class="javascript">    &lt;% } %&gt;</code>
-        <code class="html">  &lt;/ul&gt;</code>
-        <code class="html">&lt;/script&gt;</code>
-        <code class="html"> </code>
-        <code class="html">&lt;script class="text/template" id="errorTemplate"&gt;</code>
-        <code class="html">  &lt;span&gt; &lt;%= error %&gt; &lt;/span&gt;</code>
-        <code class="html">&lt;/script&gt;</code>
-      </pre>
-    </div>
-    <div class="c-code-column">
-      <label>
-        index.js :
-      </label>
-      <pre>
-        <code class="javascript">function fetchItems () {</code>
-        <code class="javascript">  const $result = $('#result')</code>
-        <code class="javascript">  $.get('/items')</code>
-        <code class="javascript">    .<mark>done</mark>(items => {</code>
+        <code class="javascript">    <mark>.done(items => {</mark></code>
         <code class="javascript">      <mark>$result.html(itemsTemplate({ items })</mark></code>
         <code class="javascript">    })</code>
-        <code class="javascript">    .error(error => {</code>
-        <code class="javascript">      $result.html(errorTemplate({ error })</code>
-        <code class="javascript">    })</code>
-        <code class="javascript">}</code>
-        <code class="javascript"> </code>
-        <code class="javascript">const $button = $('#button')</code>
-        <code class="javascript">$button.on('click', () => { fetchItems() })</code>
-      </pre>
-    </div>
-  </div>
-</section>
-
-<section class="slide c-slide">
-  <h2>
-    Example: jQuery, Underscore
-  </h2>
-  <div class="c-code">
-    <div class="c-code-column">
-      <label>
-        index.html :
-      </label>
-      <pre>
-        <code class="html">&lt;button id="button"&gt;Fetch Items&lt;/button&gt;</code>
-        <code class="html"> </code>
-        <code class="html">&lt;div id="result"&gt;&lt;/div&gt;</code>
-        <code class="html"> </code>
-        <code class="html">&lt;script class="text/template" id="itemsTemplate"&gt;</code>
-        <code class="html">  &lt;ul&gt;</code>
-        <code class="javascript">    &lt;% for (var i = 0; i <= items.length; i++) { %&gt;</code>
-        <code class="html">      &lt;li&gt;</code>
-        <code class="html">        &lt;span&gt; &lt;%= items[i] %&gt; &lt;/span&gt;</code>
-        <code class="html">      &lt;/li&gt;</code>
-        <code class="javascript">    &lt;% } %&gt;</code>
-        <code class="html">  &lt;/ul&gt;</code>
-        <code class="html">&lt;/script&gt;</code>
-        <code class="html"> </code>
-        <code class="html">&lt;script class="text/template" id="errorTemplate"&gt;</code>
-        <code class="html">  &lt;span&gt; &lt;%= error %&gt; &lt;/span&gt;</code>
-        <code class="html">&lt;/script&gt;</code>
-      </pre>
-    </div>
-    <div class="c-code-column">
-      <label>
-        index.js :
-      </label>
-      <pre>
-        <code class="javascript">function fetchItems () {</code>
-        <code class="javascript">  const $result = $('#result')</code>
-        <code class="javascript">  $.get('/items')</code>
-        <code class="javascript">    .done(items => {</code>
-        <code class="javascript">      $result.html(itemsTemplate({ items })</code>
-        <code class="javascript">    })</code>
-        <code class="javascript">    .<mark>error</mark>(error => {</code>
+        <code class="javascript">    <mark>.error(error => {</mark></code>
         <code class="javascript">      <mark>$result.html(errorTemplate({ error })</mark></code>
         <code class="javascript">    })</code>
         <code class="javascript">}</code>
@@ -652,58 +507,6 @@
         <code class="html">    <mark>{{error}}</mark></code>
         <code class="html">  &lt;/span&gt;</code>
         <code class="html">  &lt;ul ng-if="error === null"&gt;</code>
-        <code class="html">    &lt;li ng-repeat="item in items"&gt;</code>
-        <code class="html">      &lt;span&gt; {{item}} &lt;/span&gt;</code>
-        <code class="html">    &lt;/li&gt;</code>
-        <code class="html">  &lt;/ul&gt;</code>
-        <code class="html">&lt;/div&gt;</code>
-      </pre>
-    </div>
-    <div class="c-code-column">
-      <label>
-        controller.js :
-      </label>
-      <pre>
-        <code class="javascript">const vm = this</code>
-        <code class="javascript"> </code>
-        <code class="javascript">vm.items = []</code>
-        <code class="javascript">vm.error = null</code>
-        <code class="javascript"> </code>
-        <code class="javascript">vm.fetchItems = () => {</code>
-        <code class="javascript">  $http.get('/items')</code>
-        <code class="javascript">    .then(response => {</code>
-        <code class="javascript">      vm.items = response.data</code>
-        <code class="javascript">      vm.error = null</code>
-        <code class="javascript">    })</code>
-        <code class="javascript">    .error(error => {</code>
-        <code class="javascript">      vm.items = []</code>
-        <code class="javascript">      vm.error = error.text</code>
-        <code class="javascript">    })</code>
-        <code class="javascript">}</code>
-      </pre>
-    </div>
-  </div>
-</section>
-
-<section class="slide c-slide">
-  <h2>
-    Example: Angular 1
-  </h2>
-  <div class="c-code">
-    <div class="c-code-column">
-      <label>
-        template.html :
-      </label>
-      <pre>
-        <code class="html">&lt;button ng-click="fetchItems()"&gt;</code>
-        <code class="html">  Fetch Items</code>
-        <code class="html">&lt;/button&gt;</code>
-        <code class="html"> </code>
-        <code class="html">&lt;div&gt;</code>
-        <code class="html">  &lt;span ng-if="error !== null"&gt;</code>
-        <code class="html">    {{error}}</code>
-        <code class="html">  &lt;/span&gt;</code>
-        <code class="html">  &lt;ul ng-if="error === null"&gt;</code>
         <code class="html">    &lt;li <mark>ng-repeat="item in items"</mark>&gt;</code>
         <code class="html">      &lt;span&gt; <mark>{{item}}</mark> &lt;/span&gt;</code>
         <code class="html">    &lt;/li&gt;</code>
@@ -718,117 +521,13 @@
       <pre>
         <code class="javascript">const vm = this</code>
         <code class="javascript"> </code>
-        <code class="javascript">vm.items = []</code>
-        <code class="javascript">vm.error = null</code>
-        <code class="javascript"> </code>
-        <code class="javascript">vm.fetchItems = () => {</code>
-        <code class="javascript">  $http.get('/items')</code>
-        <code class="javascript">    .then(response => {</code>
-        <code class="javascript">      vm.items = response.data</code>
-        <code class="javascript">      vm.error = null</code>
-        <code class="javascript">    })</code>
-        <code class="javascript">    .error(error => {</code>
-        <code class="javascript">      vm.items = []</code>
-        <code class="javascript">      vm.error = error.text</code>
-        <code class="javascript">    })</code>
-        <code class="javascript">}</code>
-      </pre>
-    </div>
-  </div>
-</section>
-
-<section class="slide c-slide">
-  <h2>
-    Example: Angular 1
-  </h2>
-  <div class="c-code">
-    <div class="c-code-column">
-      <label>
-        template.html :
-      </label>
-      <pre>
-        <code class="html">&lt;button ng-click="fetchItems()"&gt;</code>
-        <code class="html">  Fetch Items</code>
-        <code class="html">&lt;/button&gt;</code>
-        <code class="html"> </code>
-        <code class="html">&lt;div&gt;</code>
-        <code class="html">  &lt;span ng-if="error !== null"&gt;</code>
-        <code class="html">    {{error}}</code>
-        <code class="html">  &lt;/span&gt;</code>
-        <code class="html">  &lt;ul ng-if="error === null"&gt;</code>
-        <code class="html">    &lt;li ng-repeat="item in items"&gt;</code>
-        <code class="html">      &lt;span&gt; {{item}} &lt;/span&gt;</code>
-        <code class="html">    &lt;/li&gt;</code>
-        <code class="html">  &lt;/ul&gt;</code>
-        <code class="html">&lt;/div&gt;</code>
-      </pre>
-    </div>
-    <div class="c-code-column">
-      <label>
-        controller.js :
-      </label>
-      <pre>
-        <code class="javascript">const vm = this</code>
-        <code class="javascript"> </code>
-        <code class="javascript">vm.items = []</code>
-        <code class="javascript">vm.error = null</code>
+        <code class="javascript"><mark>vm.items = []</mark></code>
+        <code class="javascript"><mark>vm.error = null</mark></code>
         <code class="javascript"> </code>
         <code class="javascript">vm.fetchItems = () => {</code>
         <code class="javascript">  $http.get('/items')</code>
         <code class="javascript">    .<mark>then</mark>(response => {</code>
         <code class="javascript">      <mark>vm.items = response.data</mark></code>
-        <code class="javascript">      vm.error = null</code>
-        <code class="javascript">    })</code>
-        <code class="javascript">    .error(error => {</code>
-        <code class="javascript">      vm.items = []</code>
-        <code class="javascript">      vm.error = error.text</code>
-        <code class="javascript">    })</code>
-        <code class="javascript">}</code>
-      </pre>
-    </div>
-  </div>
-</section>
-
-<section class="slide c-slide">
-  <h2>
-    Example: Angular 1
-  </h2>
-  <div class="c-code">
-    <div class="c-code-column">
-      <label>
-        template.html :
-      </label>
-      <pre>
-        <code class="html">&lt;button ng-click="fetchItems()"&gt;</code>
-        <code class="html">  Fetch Items</code>
-        <code class="html">&lt;/button&gt;</code>
-        <code class="html"> </code>
-        <code class="html">&lt;div&gt;</code>
-        <code class="html">  &lt;span ng-if="error !== null"&gt;</code>
-        <code class="html">    {{error}}</code>
-        <code class="html">  &lt;/span&gt;</code>
-        <code class="html">  &lt;ul ng-if="error === null"&gt;</code>
-        <code class="html">    &lt;li ng-repeat="item in items"&gt;</code>
-        <code class="html">      &lt;span&gt; {{item}} &lt;/span&gt;</code>
-        <code class="html">    &lt;/li&gt;</code>
-        <code class="html">  &lt;/ul&gt;</code>
-        <code class="html">&lt;/div&gt;</code>
-      </pre>
-    </div>
-    <div class="c-code-column">
-      <label>
-        controller.js :
-      </label>
-      <pre>
-        <code class="javascript">const vm = this</code>
-        <code class="javascript"> </code>
-        <code class="javascript">vm.items = []</code>
-        <code class="javascript">vm.error = null</code>
-        <code class="javascript"> </code>
-        <code class="javascript">vm.fetchItems = () => {</code>
-        <code class="javascript">  $http.get('/items')</code>
-        <code class="javascript">    .then(response => {</code>
-        <code class="javascript">      vm.items = response.data</code>
         <code class="javascript">      vm.error = null</code>
         <code class="javascript">    })</code>
         <code class="javascript">    .<mark>error</mark>(error => {</code>
@@ -979,7 +678,7 @@
       <pre>
         <code class="javascript">render () {</code>
         <code class="javascript">  const { fetchItems } = this</code>
-        <code class="javascript">  const { <mark>items</mark>, error } = <mark>this.state</mark></code>
+        <code class="javascript">  <mark>const { items, error } = this.state</mark></code>
         <code class="javascript"> </code>
         <code class="javascript">  return (</code>
         <code class="html">    &lt;div&gt;</code>
@@ -988,103 +687,7 @@
         <code class="html">      &lt;/button&gt;</code>
         <code class="javascript">      { error === null</code>
         <code class="html">        ? <mark>&lt;ItemsList items={items} /&gt;</mark></code>
-        <code class="html">        : &lt;Error error={error} /&gt; }</code>
-        <code class="html">    &lt;/div&gt;</code>
-        <code class="javascript">  )</code>
-        <code class="javascript">}</code>
-      </pre>
-    </div>
-    <div class="c-code-column">
-      <label>
-        component.js / fetchItems method :
-      </label>
-      <pre>
-        <code class="javascript">state = { items: [], error: null }</code>
-        <code class="javascript"> </code>
-        <code class="javascript">fetchItems () {</code>
-        <code class="javascript">  $.get('/items')</code>
-        <code class="javascript">    .done(items => {</code>
-        <code class="javascript">      this.setState({ items, error: null })</code>
-        <code class="javascript">    })</code>
-        <code class="javascript">    .error(error => {</code>
-        <code class="javascript">      this.setState({ items: [], error })</code>
-        <code class="javascript">    })</code>
-        <code class="javascript">}</code>
-      </pre>
-    </div>
-  </div>
-</section>
-
-<section class="slide c-slide">
-  <h2>
-    Example: React
-  </h2>
-  <div class="c-code">
-    <div class="c-code-column">
-      <label>
-        component.js / render method :
-      </label>
-      <pre>
-        <code class="javascript">render () {</code>
-        <code class="javascript">  const { fetchItems } = this</code>
-        <code class="javascript">  const { items, <mark>error</mark> } = <mark>this.state</mark></code>
-        <code class="javascript"> </code>
-        <code class="javascript">  return (</code>
-        <code class="html">    &lt;div&gt;</code>
-        <code class="html">      &lt;button onClick={fetchItems}&gt;</code>
-        <code class="html">        Fetch Items</code>
-        <code class="html">      &lt;/button&gt;</code>
-        <code class="javascript">      { error === null</code>
-        <code class="html">        ? &lt;ItemsList items={items} /&gt;</code>
         <code class="html">        : <mark>&lt;Error error={error} /&gt;</mark> }</code>
-        <code class="html">    &lt;/div&gt;</code>
-        <code class="javascript">  )</code>
-        <code class="javascript">}</code>
-      </pre>
-    </div>
-    <div class="c-code-column">
-      <label>
-        component.js / fetchItems method :
-      </label>
-      <pre>
-        <code class="javascript">state = { items: [], error: null }</code>
-        <code class="javascript"> </code>
-        <code class="javascript">fetchItems () {</code>
-        <code class="javascript">  $.get('/items')</code>
-        <code class="javascript">    .done(items => {</code>
-        <code class="javascript">      this.setState({ items, error: null })</code>
-        <code class="javascript">    })</code>
-        <code class="javascript">    .error(error => {</code>
-        <code class="javascript">      this.setState({ items: [], error })</code>
-        <code class="javascript">    })</code>
-        <code class="javascript">}</code>
-      </pre>
-    </div>
-  </div>
-</section>
-
-<section class="slide c-slide">
-  <h2>
-    Example: React
-  </h2>
-  <div class="c-code">
-    <div class="c-code-column">
-      <label>
-        component.js / render method :
-      </label>
-      <pre>
-        <code class="javascript">render () {</code>
-        <code class="javascript">  const { fetchItems } = this</code>
-        <code class="javascript">  const { items, error } = this.state</code>
-        <code class="javascript"> </code>
-        <code class="javascript">  return (</code>
-        <code class="html">    &lt;div&gt;</code>
-        <code class="html">      &lt;button onClick={fetchItems}&gt;</code>
-        <code class="html">        Fetch Items</code>
-        <code class="html">      &lt;/button&gt;</code>
-        <code class="javascript">      { error === null</code>
-        <code class="html">        ? &lt;ItemsList items={items} /&gt;</code>
-        <code class="html">        : &lt;Error error={error} /&gt; }</code>
         <code class="html">    &lt;/div&gt;</code>
         <code class="javascript">  )</code>
         <code class="javascript">}</code>
@@ -1101,54 +704,6 @@
         <code class="javascript">  $.get('/items')</code>
         <code class="javascript">    .<mark>done</mark>(items => {</code>
         <code class="javascript">      <mark>this.setState({ items, error: null })</mark></code>
-        <code class="javascript">    })</code>
-        <code class="javascript">    .error(error => {</code>
-        <code class="javascript">      this.setState({ items: [], error })</code>
-        <code class="javascript">    })</code>
-        <code class="javascript">}</code>
-      </pre>
-    </div>
-  </div>
-</section>
-
-<section class="slide c-slide">
-  <h2>
-    Example: React
-  </h2>
-  <div class="c-code">
-    <div class="c-code-column">
-      <label>
-        component.js / render method :
-      </label>
-      <pre>
-        <code class="javascript">render () {</code>
-        <code class="javascript">  const { fetchItems } = this</code>
-        <code class="javascript">  const { items, error } = this.state</code>
-        <code class="javascript"> </code>
-        <code class="javascript">  return (</code>
-        <code class="html">    &lt;div&gt;</code>
-        <code class="html">      &lt;button onClick={fetchItems}&gt;</code>
-        <code class="html">        Fetch Items</code>
-        <code class="html">      &lt;/button&gt;</code>
-        <code class="javascript">      { error === null</code>
-        <code class="html">        ? &lt;ItemsList items={items} /&gt;</code>
-        <code class="html">        : &lt;Error error={error} /&gt; }</code>
-        <code class="html">    &lt;/div&gt;</code>
-        <code class="javascript">  )</code>
-        <code class="javascript">}</code>
-      </pre>
-    </div>
-    <div class="c-code-column">
-      <label>
-        component.js / fetchItems method :
-      </label>
-      <pre>
-        <code class="javascript">state = { items: [], error: null }</code>
-        <code class="javascript"> </code>
-        <code class="javascript">fetchItems () {</code>
-        <code class="javascript">  $.get('/items')</code>
-        <code class="javascript">    .done(items => {</code>
-        <code class="javascript">      this.setState({ items, error: null })</code>
         <code class="javascript">    })</code>
         <code class="javascript">    .<mark>error</mark>(error => {</code>
         <code class="javascript">      <mark>this.setState({ items: [], error })</mark></code>
@@ -1176,6 +731,7 @@
   </ul>
 </section>
 
+<!--
 <section class="slide c-slide c-slide-cover">
   <h2>
     Purge the Unclean!
@@ -1184,6 +740,7 @@
     from impure to pure dataflow
   </p>
 </section>
+-->
 
 <section class="slide c-slide c-slide-cover">
   <h2>
@@ -1280,8 +837,7 @@
       </label>
       <pre>
         <code class="javascript">render () {</code>
-        <code class="javascript">  const { fetchItems } = this.props</code>
-        <code class="javascript">  const { items, error } = this.state</code>
+        <code class="javascript">  const { fetchItems, items, error } = this.props</code>
         <code class="javascript">  return (</code>
         <code class="html">    &lt;div&gt;</code>
         <code class="html">      &lt;button onClick={fetchItems}&gt;</code>
@@ -1350,8 +906,7 @@
       </label>
       <pre>
         <code class="javascript">render () {</code>
-        <code class="javascript">  const { <mark>fetchItems</mark> } = <mark>this.props</mark></code>
-        <code class="javascript">  const { items, error } = this.state</code>
+        <code class="javascript">  const { <mark>fetchItems</mark>, items, error } = this.props</code>
         <code class="javascript">  return (</code>
         <code class="html">    &lt;div&gt;</code>
         <code class="html">      &lt;button <mark>onClick={fetchItems}</mark>&gt;</code>
@@ -1420,8 +975,7 @@
       </label>
       <pre>
         <code class="javascript">render () {</code>
-        <code class="javascript">  const { fetchItems } = this.props</code>
-        <code class="javascript">  const { <mark>items, error</mark> } = <mark>this.state</mark></code>
+        <code class="javascript">  const { fetchItems, <mark>items, error</mark> } = this.props</code>
         <code class="javascript">  return (</code>
         <code class="html">    &lt;div&gt;</code>
         <code class="html">      &lt;button onClick={fetchItems}&gt;</code>
@@ -1490,8 +1044,7 @@
       </label>
       <pre>
         <code class="javascript">render () {</code>
-        <code class="javascript">  const { fetchItems } = this.props</code>
-        <code class="javascript">  const { items, error } = this.state</code>
+        <code class="javascript">  const { fetchItems, items, error } = this.props</code>
         <code class="javascript">  return (</code>
         <code class="html">    &lt;div&gt;</code>
         <code class="html">      &lt;button onClick={fetchItems}&gt;</code>
@@ -1560,8 +1113,7 @@
       </label>
       <pre>
         <code class="javascript">render () {</code>
-        <code class="javascript">  const { fetchItems } = this.props</code>
-        <code class="javascript">  const { items, error } = this.state</code>
+        <code class="javascript">  const { fetchItems, items, error } = this.props</code>
         <code class="javascript">  return (</code>
         <code class="html">    &lt;div&gt;</code>
         <code class="html">      &lt;button onClick={fetchItems}&gt;</code>
@@ -2698,19 +2250,25 @@
   </div>
 </section>
 
-<section class="slide c-slide c-slide-cover">
+<section class="slide c-slide c-slide-cover c-slide-custom-lotr">
   <h2>
     One Lib to rule Them All
   </h2>
   <p>
     Streams everywhere
   </p>
+  <figure>
+    <img class="cover" src="pictures/lotr.jpg" alt="LOTR">
+  </figure>
 </section>
 
-<section class="slide c-slide c-slide-cover">
+<section class="slide c-slide c-slide-cover c-slide-custom-kill-bill">
   <h2>
     Everything is a Stream
   </h2>
+  <figure>
+    <img class="cover" src="pictures/kill-bill.jpg" alt="Kill Bill">
+  </figure>
 </section>
 
 <section class="slide c-slide">
@@ -2925,6 +2483,9 @@
   <h2>
     Backend is a Stream
   </h2>
+  <div class="c-image-container">
+    <img src="pictures/jackie-chan.jpg" alt="Jackie Chan" width="300">
+  </div>
 </section>
 
 <section class="slide c-slide">
@@ -3149,6 +2710,9 @@
   <h2>
     Thank You!
   </h2>
+  <div class="c-image-container">
+    <img src="pictures/rx-logo.png" alt="RX" width="400">
+  </div>
 </section>
 
 <!--
